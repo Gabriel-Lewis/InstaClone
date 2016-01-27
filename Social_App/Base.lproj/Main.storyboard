@@ -135,7 +135,7 @@
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" rowHeight="450" id="Q4u-Wi-K1D" customClass="PostCell" customModule="Social_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="560" height="450"/>
+                                        <rect key="frame" x="0.0" y="92" width="560" height="450"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q4u-Wi-K1D" id="nGG-Qd-OHa">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="450"/>
@@ -195,7 +195,7 @@
                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="2vt-hr-Jhe"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Nedward :)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="ugu-so-IPV">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Nedward :)d" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="ugu-so-IPV">
                                                                     <rect key="frame" x="0.0" y="362" width="518" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="UWk-G0-mGs"/>
@@ -236,6 +236,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
+                                            <outlet property="heartImg" destination="gry-6L-qNh" id="9HG-GN-wYt"/>
                                             <outlet property="likesLabel" destination="xG1-6V-1vB" id="keE-IO-Spj"/>
                                             <outlet property="mainImg" destination="VF1-lh-E3T" id="YMA-D6-dxf"/>
                                             <outlet property="profileImg" destination="UQq-Kx-jW3" id="rBK-k8-12Z"/>
@@ -250,7 +251,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="obF-dB-0g2">
                                         <rect key="frame" x="8" y="8" width="544" height="37"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLz-Z6-n0r">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLz-Z6-n0r" customClass="materialTextField" customModule="Social_App" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="AD6-jZ-y49"/>
@@ -258,18 +259,25 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SkE-7Z-7Vc">
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SkE-7Z-7Vc">
                                                 <rect key="frame" x="309" y="0.0" width="50" height="37"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="HM4-ji-cAa"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="w7Z-H5-4uV" appends="YES" id="7z1-mz-NQI"/>
+                                                </connections>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUo-sJ-t9i">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUo-sJ-t9i">
                                                 <rect key="frame" x="444" y="0.0" width="100" height="37"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="GzZ-a6-PEg"/>
                                                 </constraints>
                                                 <state key="normal" title="Post"/>
+                                                <connections>
+                                                    <action selector="makePost:" destination="Dyo-hm-uNu" eventType="touchUpInside" id="ncj-B1-0IH"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -298,11 +306,18 @@
                     <navigationItem key="navigationItem" id="729-Dt-3jD"/>
                     <connections>
                         <outlet property="feedTV" destination="m4E-4J-RR6" id="qg8-Js-me8"/>
+                        <outlet property="imageSelectorBG" destination="SkE-7Z-7Vc" id="8Jc-zj-Lsi"/>
+                        <outlet property="postField" destination="iLz-Z6-n0r" id="Ivd-xx-byJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqw-e4-sIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="w7Z-H5-4uV">
+                    <connections>
+                        <action selector="selectImage:" destination="Dyo-hm-uNu" id="9Ch-Uh-VuT"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1894" y="362"/>
+            <point key="canvasLocation" x="1894" y="351"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9Nj-Un-5Ya">
@@ -320,7 +335,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tLO-Ib-0Ub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1081" y="351"/>
+            <point key="canvasLocation" x="1285" y="351"/>
         </scene>
     </scenes>
     <resources>
