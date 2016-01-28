@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 
 let BASE_URL = "https://ph-watch.firebaseio.com"
+
 class DataService {
 	static let ds = DataService()
 	

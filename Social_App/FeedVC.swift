@@ -86,6 +86,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		feedTV.delegate = self
 		feedTV.dataSource = self
 		imagePicker = UIImagePickerController()

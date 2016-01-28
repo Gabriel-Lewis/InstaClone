@@ -108,20 +108,21 @@
                             <constraint firstItem="bFS-83-bUo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="oEx-CF-TFE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dUR-fz-Hhd"/>
                     <connections>
                         <outlet property="emailField" destination="eQh-Xl-uzM" id="aod-7X-08j"/>
                         <outlet property="passwordField" destination="Saf-1s-fAT" id="LLC-Q2-I4V"/>
-                        <segue destination="Yzf-Wn-E0s" kind="show" identifier="loggedIn" id="B8l-BB-YHC"/>
+                        <segue destination="Sal-qh-pd3" kind="show" identifier="loggedIn" id="qGb-H6-ah2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="351"/>
+            <point key="canvasLocation" x="-46" y="793"/>
         </scene>
         <!--FeedVC-->
         <scene sceneID="OOd-1I-Cpc">
             <objects>
-                <viewController id="Dyo-hm-uNu" customClass="FeedVC" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FeedVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dyo-hm-uNu" customClass="FeedVC" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4vU-08-raL"/>
                         <viewControllerLayoutGuide type="bottom" id="b7R-x4-mhJ"/>
@@ -317,25 +318,25 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1894" y="351"/>
+            <point key="canvasLocation" x="1478" y="793"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="9Nj-Un-5Ya">
+        <scene sceneID="bd4-5C-GYs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Yzf-Wn-E0s" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sal-qh-pd3" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UXi-uh-F5v">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="A9k-zz-yiT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Dyo-hm-uNu" kind="relationship" relationship="rootViewController" id="fWO-EZ-EEi"/>
+                        <segue destination="Dyo-hm-uNu" kind="relationship" relationship="rootViewController" id="bSL-wb-phv"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tLO-Ib-0Ub" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ftZ-Jy-Tpi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1285" y="351"/>
+            <point key="canvasLocation" x="666" y="793"/>
         </scene>
     </scenes>
     <resources>

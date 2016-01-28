@@ -31,6 +31,7 @@ class PostCell: UITableViewCell {
 		heartImg.addGestureRecognizer(tap)
 		heartImg.userInteractionEnabled = true
 	}
+	
 	override func drawRect(rect: CGRect) {
 		profileImg.layer.cornerRadius = 10
 		
@@ -38,8 +39,11 @@ class PostCell: UITableViewCell {
 	
 	func configureCell(post: Post, img: UIImage?) {
 		self._post = post
+		
 		likeRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").childByAppendingPath(post.postKey)
+		
 		self.title.text = post.postDescription
+		
 		self.likesLabel.text = "\(post.likes)"
 		
 		if post.imageURL != nil {
@@ -51,6 +55,7 @@ class PostCell: UITableViewCell {
 				Alamofire.request(.GET, post.imageURL!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
 					
 					if err == nil {
+						
 						//Add If let!!!
 						let img = UIImage(data: data!)!
 						self.mainImg.image = img

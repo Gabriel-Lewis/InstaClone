@@ -15,18 +15,17 @@ class ViewController: UIViewController {
 	
 	@IBOutlet weak var emailField: materialTextField!
 	@IBOutlet weak var passwordField: materialTextField!
+	
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
-			self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-		}
 	}
+	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
-			self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-		}
+
 	}
+	
 	@IBAction func EmailAttemptLogin(sender: AnyObject) {
 		if let email = emailField.text where email != "", let pwd = passwordField.text where pwd != "" {
 			DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { error, authData in
@@ -86,7 +85,7 @@ class ViewController: UIViewController {
 	@IBAction func fbButtonPressed(sender: AnyObject!) {
 		let loginManager = FBSDKLoginManager()
 		
-		loginManager.logInWithReadPermissions(["email"]) { (result, FBerror) -> Void in
+		loginManager.logInWithReadPermissions(["email"], fromViewController: ViewController(), handler: { (result, FBerror) -> Void in
 			
 			if  FBerror != nil {
 				print("facebook login failed \(FBerror)")
@@ -111,7 +110,7 @@ class ViewController: UIViewController {
 				})
 			}
 			
-		}
+		})
 		
 			
 		
