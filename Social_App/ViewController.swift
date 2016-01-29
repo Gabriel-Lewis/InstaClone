@@ -50,7 +50,7 @@ class ViewController: UIViewController {
 								DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: {
 									err, authData in
 									
-									let user = ["provider": authData.provider!,"blah":"Email-test"]
+									let user = ["provider": authData.provider!]
 									DataService.ds.createFirebaseUser(authData.uid, user: user)
 								})
 								
@@ -85,7 +85,7 @@ class ViewController: UIViewController {
 	@IBAction func fbButtonPressed(sender: AnyObject!) {
 		let loginManager = FBSDKLoginManager()
 		
-		loginManager.logInWithReadPermissions(["email"], fromViewController: ViewController(), handler: { (result, FBerror) -> Void in
+		loginManager.logInWithReadPermissions(["email"], fromViewController: nil, handler: { (result, FBerror) -> Void in
 			
 			if  FBerror != nil {
 				print("facebook login failed \(FBerror)")
@@ -98,12 +98,12 @@ class ViewController: UIViewController {
 					if error != nil {
 						print("login failed \(error)")
 					} else {
-						print("It worked! \(authData) 😌")
+						
 						NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: KEY_UID)
 						self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
 						
 						//Should add If lets!!!!
-						let user = ["provider": authData.provider!,"blah":"test"]
+						let user = ["provider": authData.provider!]
 						DataService.ds.createFirebaseUser(authData.uid, user: user)
 						
 					}

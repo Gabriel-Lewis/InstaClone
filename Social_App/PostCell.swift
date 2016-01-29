@@ -16,12 +16,20 @@ class PostCell: UITableViewCell {
 	@IBOutlet weak var title: UILabel!
 	@IBOutlet weak var likesLabel: UILabel!
 	@IBOutlet weak var heartImg: UIImageView!
+	@IBOutlet weak var usernameLabl: UILabel!
 	
 	var likeRef: Firebase!
 	var _post: Post!
 	var post: Post? {
 		return _post
 	}
+	
+	var user: User? {
+		return _user
+	}
+	
+	var _user: User!
+	
 	var request: Request?
 	
 	override func awakeFromNib() {
@@ -30,6 +38,8 @@ class PostCell: UITableViewCell {
 		tap.numberOfTapsRequired = 1
 		heartImg.addGestureRecognizer(tap)
 		heartImg.userInteractionEnabled = true
+		
+		
 	}
 	
 	override func drawRect(rect: CGRect) {
@@ -38,17 +48,28 @@ class PostCell: UITableViewCell {
 	}
 	
 	func configureCell(post: Post, img: UIImage?) {
+		
 		self._post = post
-		
 		likeRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").childByAppendingPath(post.postKey)
-		
+		self.usernameLabl.text = post.username
 		self.title.text = post.postDescription
-		
 		self.likesLabel.text = "\(post.likes)"
 		
-		if post.imageURL != nil {
+		// profile image start
+		
+		Alamofire.request(.GET, post.profileImageURL!).validate(contentType: ["image/*"]).response(completionHandler: {
+			request, response, data, err in
+			
+			if err == nil {
+				let pImg = UIImage(data: data!)!
+				self.profileImg.image = pImg
+			}
+			})
+		
+		// profile image stop
 			
 			if img != nil {
+				
 				self.mainImg.image = img
 			} else {
 				
@@ -63,9 +84,10 @@ class PostCell: UITableViewCell {
 						self.mainImg.hidden = false
 						
 					}
-					
-					}) 
+				})
 			}
+			
+			if post.imageURL != nil {
 		} else {
 			print("failed!")
 			self.mainImg.hidden = true
@@ -96,7 +118,9 @@ class PostCell: UITableViewCell {
 		
 	}
 	
+	}
 	
 	
-	
-}
+
+
+

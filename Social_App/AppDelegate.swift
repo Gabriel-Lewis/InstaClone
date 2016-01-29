@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		if NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) != nil {
 			self.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("FeedVC") as UIViewController
+		} else {
+			self.window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ViewController") 
 		}
 		
 		FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

@@ -12,14 +12,16 @@ import Firebase
 class Post {
 	private var _postDescription: String!
 	private var _imageURL: String?
-	private var _username: String!
+	private var _username: String?
 	private var _likes: Int!
 	private var _postKey: String!
+	private var _profileImageURL: String?
 	private var _postRef: Firebase!
 	
-	var postDescription: String? {
+	var postDescription: String {
 		return _postDescription
 	}
+	
 	
 	var imageURL: String? {
 		
@@ -30,19 +32,23 @@ class Post {
 		return _likes
 	}
 	
-	var username: String {
+	var username: String? {
 		return _username
 	}
 	
 	var postKey: String {
 		return _postKey
 	}
+	var profileImageURL: String? {
+		return _profileImageURL
+	}
 	
-	init(description: String, imageURL: String, likes: Int, username: String) {
+	init(description: String, imageURL: String, likes: Int, username: String, profileImgURL: String) {
 		self._postDescription = description
 		self._likes = likes
 		self._username = username
 		self._imageURL = imageURL
+		self._profileImageURL = profileImageURL
 		
 	}
 	
@@ -59,6 +65,14 @@ class Post {
 		
 		if let desc = dictionary["description"] as? String {
 			self._postDescription = desc
+		}
+		
+		if let username = dictionary["username"] as? String {
+			self._username = username
+		}
+		
+		if let profileImageURL = dictionary["profileImgUrl"] as? String {
+			self._profileImageURL = profileImageURL
 		}
 		
 		self._postRef = DataService.ds.REF_POSTS.childByAppendingPath(self.postKey)
