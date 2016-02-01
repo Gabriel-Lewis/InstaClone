@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import Firebase
 
 
 class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -15,6 +16,8 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 	
 	var imagePicker: UIImagePickerController!
 	var imageSelected = false
+	var postRef: Firebase!
+	var _post: Post!
 	
 	@IBOutlet weak var imageSelectorBG: UIImageView!
 	
@@ -67,6 +70,7 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 											if let imgLink = images["direct_link"] as? String {
 												let finalLink = "http://\(imgLink)"
 												self.postToFirebase(finalLink)
+												//addPost(postref)
 											}
 										}
 									}
@@ -97,7 +101,8 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 	
 	
 	
-	func postToFirebase(imgUrl: String?) {
+	func postToFirebase(imgUrl: String?)  {
+		
 		let now = NSDate()
 		var post: Dictionary<String, AnyObject> = [
 			"description": postField.text!,
@@ -107,17 +112,44 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 			"date": "\(now)"
 		]
 		
+		
 		if imgUrl != nil {
 			post["imageURL"] = imgUrl!
 		}
 		
 		let firebasePost = DataService.ds.REF_POSTS.childByAutoId()
-		firebasePost.setValue(post)
+			firebasePost.setValue(post) { Err, FireBase in
+				FireBase.observeEventType(.Value, withBlock: { snapshot in
+					if snapshot.exists() {
+						self.addPost(snapshot.key)
+						print(snapshot.key)
+					}
+				
+				})
+		}
+		
+		//firebasePost.setValue(post)
+		
+		
+		
+		//addPost()
+		
 		
 		postField.text = ""
 		
 		imageSelectorBG.image = nil
 		
 		imageSelected = false
+	}
+	
+	func addPost(post:String) {
+		let post = post
+		postRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("posts").childByAppendingPath(post)
+		postRef.setValue(true)
+				
+		
+		
+		
+			
 	}
 }

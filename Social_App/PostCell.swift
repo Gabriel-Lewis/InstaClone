@@ -40,7 +40,6 @@ class PostCell: UITableViewCell {
 		heartImg.addGestureRecognizer(tap)
 		heartImg.userInteractionEnabled = true
 		
-		
 	}
 	
 	override func drawRect(rect: CGRect) {

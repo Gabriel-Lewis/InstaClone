@@ -17,10 +17,16 @@ class User {
 	private var _username: String?
 	private var _userKey: String!
 	private var _userRef: Firebase!
+	private var _postRef: Int!
 	
 	var profileImageURL: String! {
 		return _profileImageURL
 	}
+	
+	var postRef: Int {
+		return _postRef
+	}
+	
 	
 	var username: String? {
 		return _username
@@ -38,6 +44,9 @@ class User {
 	init(userKey: String, dictionary: Dictionary<String, AnyObject>) {
 		self._userKey = userKey
 		
+		if let post = dictionary["posts"] as? Int {
+			self._postRef = post
+		}
 		
 		
 		if let username = dictionary["username"] as? String {
@@ -46,6 +55,11 @@ class User {
 		
 		self._userRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath(self.userKey)
 		
+	}
+	
+	func addPost(post: Post) {
+		let post = post
+		_userRef.childByAppendingPath("posts").setValue(post.postKey)
 	}
 	
 	
