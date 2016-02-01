@@ -14,7 +14,7 @@ import Alamofire
 class User {
 	
 	private var _profileImageURL: String!
-	private var _username: String!
+	private var _username: String?
 	private var _userKey: String!
 	private var _userRef: Firebase!
 	
@@ -22,7 +22,7 @@ class User {
 		return _profileImageURL
 	}
 	
-	var username: String! {
+	var username: String? {
 		return _username
 	}
 	
@@ -45,6 +45,7 @@ class User {
 		}
 		
 		self._userRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath(self.userKey)
+		
 	}
 	
 	

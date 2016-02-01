@@ -16,7 +16,13 @@ class Post {
 	private var _likes: Int!
 	private var _postKey: String!
 	private var _profileImageURL: String?
+	private var _date: String!
+	
 	private var _postRef: Firebase!
+	
+	var date: String {
+		return _date
+	}
 	
 	var postDescription: String {
 		return _postDescription
@@ -43,17 +49,23 @@ class Post {
 		return _profileImageURL
 	}
 	
-	init(description: String, imageURL: String, likes: Int, username: String, profileImgURL: String) {
+	init(description: String, imageURL: String, likes: Int, username: String, profileImgURL: String, date: String) {
 		self._postDescription = description
 		self._likes = likes
 		self._username = username
 		self._imageURL = imageURL
-		self._profileImageURL = profileImageURL
+		self._profileImageURL = profileImgURL
+		self._date = date
 		
 	}
 	
 	init(postKey: String, dictionary: Dictionary<String, AnyObject>) {
 		self._postKey = postKey
+		
+		if let date = dictionary["date"] as? String {
+			self._date = date
+		}
+		
 		
 		if let likes = dictionary["likes"] as? Int {
 			self._likes = likes
@@ -89,4 +101,6 @@ class Post {
 		_postRef.childByAppendingPath("likes").setValue(_likes)
 		
 	}
+	
+	
 }

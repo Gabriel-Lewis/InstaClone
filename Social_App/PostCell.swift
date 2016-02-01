@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Firebase
+
 class PostCell: UITableViewCell {
 
 	@IBOutlet weak var profileImg: UIImageView!
@@ -116,7 +117,11 @@ class PostCell: UITableViewCell {
 		}
 	})
 		
+		
 	}
+	
+	
+	
 	
 	}
 	

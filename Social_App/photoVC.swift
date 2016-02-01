@@ -23,7 +23,6 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		
 		imagePicker = UIImagePickerController()
 		imagePicker.delegate = self
 		
@@ -36,11 +35,11 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 	}
 	
 	@IBAction func makePost(sender: AnyObject) {
-		print("1")
+		
 		if let txt = postField.text where txt != "" {
-			print("2")
+			
 			if let img = imageSelectorBG.image where imageSelected == true {
-				print("3")
+				
 				
 				let urlStr = "https://api.imageshack.com/v2/images"
 				let url = NSURL(string: urlStr)!
@@ -60,12 +59,12 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 							
 						case .Success(let upload, _, _):
 							
+							
 							upload.responseJSON { response in
 								if let info = response.result.value as? Dictionary<String, AnyObject> {
 									if let dict = info["result"] as? Dictionary<String,AnyObject> {
 										if let images = dict["images"]?[0] as? Dictionary<String,AnyObject> {
 											if let imgLink = images["direct_link"] as? String {
-												print("Link: \(imgLink)")
 												let finalLink = "http://\(imgLink)"
 												self.postToFirebase(finalLink)
 											}
@@ -93,15 +92,19 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 		imagePicker.dismissViewControllerAnimated(true, completion: nil)
 		imageSelectorBG.image = image
 		imageSelected = true
+		
 	}
 	
 	
+	
 	func postToFirebase(imgUrl: String?) {
+		let now = NSDate()
 		var post: Dictionary<String, AnyObject> = [
 			"description": postField.text!,
 			"likes": 0,
 			"username": NSUserDefaults.standardUserDefaults().objectForKey(USERNAME)!,
-			"profileImgUrl": NSUserDefaults.standardUserDefaults().objectForKey("profileImageUrl")!
+			"profileImgUrl": NSUserDefaults.standardUserDefaults().objectForKey("profileImageUrl")!,
+			"date": "\(now)"
 		]
 		
 		if imgUrl != nil {
@@ -116,7 +119,5 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 		imageSelectorBG.image = nil
 		
 		imageSelected = false
-		
-		
 	}
 }

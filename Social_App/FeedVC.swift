@@ -17,18 +17,20 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	@IBOutlet weak var feedTV: UITableView!
 	
 	var posts = [Post]()
-	
+	var user: User!
 	static var imageCache = NSCache()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+			
+		
 		feedTV.delegate = self
 		feedTV.dataSource = self
 		
 		
+		
 		DataService.ds.REF_POSTS.observeEventType(.Value, withBlock: { snapShot in
-			print(snapShot.value)
 			
 			if let snapshots = snapShot.children.allObjects as? [FDataSnapshot] {
 				self.posts = []
@@ -42,7 +44,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 					}
 				}
 			}
-			
+			self.sortList()
 			self.feedTV.reloadData()
 		})
 	}
@@ -58,6 +60,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		
 		let post = posts[indexPath.row]
 		
 		
@@ -78,5 +81,20 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "showImageDetail" {
+			let destination = segue.destinationViewController as? ImageDetailVC
+			let cell = sender as! PostCell
+			let selectedRow = feedTV.indexPathForCell(cell)
+			destination!.eventData = selectedRow
+		}
+	}
+	
+	
+	func sortList() {
+		posts.sortInPlace() { $0.date > $1.date }
+		self.feedTV.reloadData()
+	}
 	
 }
