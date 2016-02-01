@@ -18,16 +18,15 @@ class ImageDetailVC: UIViewController {
 	var eventData: NSIndexPath!
 	var posts = [Post]()
 	var post: Post!
-	    override func viewDidLoad() {
+	
+	override func viewDidLoad() {
         super.viewDidLoad()
-			
 			
 			DataService.ds.REF_POSTS.observeEventType(.Value, withBlock: { snapShot in
 				
 				if let snapshots = snapShot.children.allObjects as? [FDataSnapshot] {
 					self.posts = []
 					for snap in snapshots {
-						
 						
 						if let postDict = snap.value as? Dictionary<String,AnyObject> {
 							let key = snap.key
@@ -38,21 +37,9 @@ class ImageDetailVC: UIViewController {
 				}
 				self.configureView(self.posts[self.eventData.row])
 			})
-
-
     }
 	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(true)
-		
-	}
-	override func viewWillAppear(animated: Bool) {
-
-	}
-
-	
 	func configureView(post: Post) {
-		
 		label.text = post.postDescription
 		let url = post.imageURL
 		image.image = FeedVC.imageCache.objectForKey(url!) as? UIImage

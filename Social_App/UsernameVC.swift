@@ -22,11 +22,10 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 	@IBAction func createUser(Sender: AnyObject){
 		
 		let usernametext = userNameLbl.text?.lowercaseString
-		
+	
 		DataService.ds.REF_USER_CURRENT.childByAppendingPath("username").setValue(usernametext)
 		
 		if let img = profileImage.image where imageSelected == true {
-			
 			
 			let urlStr = "https://api.imageshack.com/v2/images"
 			let url = NSURL(string: urlStr)!
@@ -51,10 +50,8 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 								if let dict = info["result"] as? Dictionary<String,AnyObject> {
 									if let images = dict["images"]?[0] as? Dictionary<String,AnyObject> {
 										if let imgLink = images["direct_link"] as? String {
-											print("Link: \(imgLink)")
 											let finalLink = "http://\(imgLink)"
 											self.postProfileImageToFireB(finalLink)
-											
 										}
 									}
 								}
@@ -64,14 +61,8 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 						print(error)
 					}
 			})
-			
 		}
-		
-		
-		
-		
 		NSUserDefaults.standardUserDefaults().setObject(usernametext, forKey: USERNAME)
-		
 		performSegueWithIdentifier("loggedInWithUsername", sender: nil)
 	}
 	
@@ -85,17 +76,18 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 		imageSelected = true
 	}
 	
-	
     override func viewDidLoad() {
         super.viewDidLoad()
 		imagePicker = UIImagePickerController()
 		imagePicker.delegate = self
-        // Do any additional setup after loading the view.
     }
 	
 	func postProfileImageToFireB(url: String) {
 		NSUserDefaults.standardUserDefaults().setObject(url, forKey: "profileImageUrl")
 		DataService.ds.REF_USER_CURRENT.childByAppendingPath("profileImageUrl").setValue(url)
-	
 	}
+	
+	
+	
+	
 }

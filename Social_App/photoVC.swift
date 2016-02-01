@@ -20,7 +20,6 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 	var _post: Post!
 	
 	@IBOutlet weak var imageSelectorBG: UIImageView!
-	
 	@IBOutlet weak var postField: materialTextField!
 	
 	override func viewDidLoad() {
@@ -28,8 +27,6 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 		
 		imagePicker = UIImagePickerController()
 		imagePicker.delegate = self
-		
-		
 	}
 	
 	@IBAction func selectImage(sender: UITapGestureRecognizer) {
@@ -42,7 +39,6 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 		if let txt = postField.text where txt != "" {
 			
 			if let img = imageSelectorBG.image where imageSelected == true {
-				
 				
 				let urlStr = "https://api.imageshack.com/v2/images"
 				let url = NSURL(string: urlStr)!
@@ -84,8 +80,6 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 			} else {
 				self.postToFirebase(nil)
 			}
-			
-			
 		}
 		
 	}
@@ -122,23 +116,12 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 				FireBase.observeEventType(.Value, withBlock: { snapshot in
 					if snapshot.exists() {
 						self.addPost(snapshot.key)
-						print(snapshot.key)
 					}
-				
 				})
 		}
-		
-		//firebasePost.setValue(post)
-		
-		
-		
-		//addPost()
-		
-		
+
 		postField.text = ""
-		
 		imageSelectorBG.image = nil
-		
 		imageSelected = false
 	}
 	
@@ -146,10 +129,9 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 		let post = post
 		postRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("posts").childByAppendingPath(post)
 		postRef.setValue(true)
-				
-		
-		
-		
 			
 	}
+	
+	
+	
 }

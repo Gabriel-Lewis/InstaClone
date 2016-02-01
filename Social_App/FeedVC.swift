@@ -23,13 +23,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-			
-		
 		feedTV.delegate = self
 		feedTV.dataSource = self
-		
-		
-		
 		DataService.ds.REF_POSTS.observeEventType(.Value, withBlock: { snapShot in
 			
 			if let snapshots = snapShot.children.allObjects as? [FDataSnapshot] {
@@ -51,30 +46,26 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return posts.count
-		
 	}
 	
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
-		
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		
 		let post = posts[indexPath.row]
-		
-		
 		if let cell = feedTV.dequeueReusableCellWithIdentifier("PostCell") as? PostCell {
 			cell.request?.cancel()
 			var img: UIImage?
 			
 			if let url = post.imageURL {
 				img = FeedVC.imageCache.objectForKey(url) as? UIImage
-				
 			}
 			
 			cell.configureCell(post, img: img)
 			return cell
+			
 		} else {
 			return PostCell()
 		}
@@ -96,5 +87,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		posts.sortInPlace() { $0.date > $1.date }
 		self.feedTV.reloadData()
 	}
+
+	
+	
+	
 	
 }

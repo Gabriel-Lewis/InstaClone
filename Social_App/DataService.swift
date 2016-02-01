@@ -12,16 +12,15 @@ import Firebase
 let BASE_URL = "https://ph-watch.firebaseio.com"
 
 class DataService {
+	
 	static let ds = DataService()
 	
 	private var _REF_BASE = Firebase(url: "\(BASE_URL)")
 	private var _REF_POSTS = Firebase(url: "\(BASE_URL)/posts")
 	private var _REF_USERS = Firebase(url: "\(BASE_URL)/users")
 	
-	
 	var REF_BASE: Firebase {
 		return _REF_BASE
-		
 	}
 	
 	var REF_POSTS: Firebase {
@@ -37,11 +36,8 @@ class DataService {
 	}
 	
 	var REF_USER_CURRENT: Firebase {
-		
 		let uid = NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) as! String
-		
 		let user = Firebase(url: "\(REF_USERS)").childByAppendingPath(uid)
-			
 		return user!
 	}
 	

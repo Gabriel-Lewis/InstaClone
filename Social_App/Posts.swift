@@ -30,8 +30,7 @@ class Post {
 	
 	
 	var imageURL: String? {
-		
-	return _imageURL
+		return _imageURL
 	}
 	
 	var likes: Int {
@@ -56,7 +55,6 @@ class Post {
 		self._imageURL = imageURL
 		self._profileImageURL = profileImgURL
 		self._date = date
-		
 	}
 	
 	init(postKey: String, dictionary: Dictionary<String, AnyObject>) {
@@ -65,7 +63,6 @@ class Post {
 		if let date = dictionary["date"] as? String {
 			self._date = date
 		}
-		
 		
 		if let likes = dictionary["likes"] as? Int {
 			self._likes = likes
@@ -101,6 +98,8 @@ class Post {
 		_postRef.childByAppendingPath("likes").setValue(_likes)
 		
 	}
+
 	
 	
 }
+

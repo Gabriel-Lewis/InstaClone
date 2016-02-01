@@ -16,16 +16,6 @@ class ViewController: UIViewController {
 	@IBOutlet weak var emailField: materialTextField!
 	@IBOutlet weak var passwordField: materialTextField!
 	
-	
-	override func viewDidLoad() {
-		super.viewDidLoad()
-	}
-	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
-
-	}
-	
 	@IBAction func EmailAttemptLogin(sender: AnyObject) {
 		if let email = emailField.text where email != "", let pwd = passwordField.text where pwd != "" {
 			DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: { error, authData in
@@ -37,31 +27,22 @@ class ViewController: UIViewController {
 
 						DataService.ds.REF_BASE.createUser(email, password: pwd, withValueCompletionBlock: { error, result in
 							
-							
 							if error != nil {
 								
 							self.showErrorAlert("Could not create Account", msg: "Problem Creating Account")
 								
 							} else {
 								
-								
 								NSUserDefaults.standardUserDefaults().setValue(result[KEY_UID], forKey: KEY_UID)
-								
 								DataService.ds.REF_BASE.authUser(email, password: pwd, withCompletionBlock: {
 									err, authData in
 									
 									let user = ["provider": authData.provider!]
 									DataService.ds.createFirebaseUser(authData.uid, user: user)
 								})
-								
-								
-								
 								self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-								
 							}
 						})
-						
-						
 					} else {
 						self.showErrorAlert("Login Error", msg: "The specified password is incorrect")
 					}
@@ -71,8 +52,6 @@ class ViewController: UIViewController {
 		} else {
 			showErrorAlert("Email and Password Required", msg: "Enter both Email and password to login")
 		}
-		
-	
 	}
 	
 	func showErrorAlert(title: String, msg: String) {
@@ -101,20 +80,17 @@ class ViewController: UIViewController {
 						
 						NSUserDefaults.standardUserDefaults().setValue(authData.uid, forKey: KEY_UID)
 						self.performSegueWithIdentifier(SEGUE_LOGGED_IN, sender: nil)
-						
-						//Should add If lets!!!!
+						//If let
 						let user = ["provider": authData.provider!]
 						DataService.ds.createFirebaseUser(authData.uid, user: user)
 						
 					}
 				})
 			}
-			
 		})
-		
-			
-		
+	}
 
-}
-
+	
+	
+	
 }
