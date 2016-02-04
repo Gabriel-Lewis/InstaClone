@@ -9,7 +9,7 @@ Users can sign into InstaClone using Facebook or their email and password of cho
 
 ##Uploading photos
 To upload photos users can tap the camera icon on the tap bar. 
-
+![rsz_1img_0400](https://cloud.githubusercontent.com/assets/7423532/12831232/3605eebc-cb61-11e5-888e-00052a379ab0.jpg)
 ###To-do
 - Personal profile tab
   - Setting view
