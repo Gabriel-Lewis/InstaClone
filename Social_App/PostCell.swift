@@ -20,7 +20,7 @@ class PostCell: UITableViewCell {
 	@IBOutlet weak var usernameLabl: UILabel!
 	
 	var likeRef: Firebase!
-	
+	var userRef: Firebase!
 	var _post: Post!
 	
 	var post: Post? {
@@ -28,11 +28,12 @@ class PostCell: UITableViewCell {
 	}
 	
 	var _user: User!
-	
 	var user: User? {
-		return _user
+	return _user
 	}
 	
+	
+	var feedVC: FeedVC?
 	var request: Request?
 	
 	override func awakeFromNib() {
@@ -41,6 +42,12 @@ class PostCell: UITableViewCell {
 		tap.numberOfTapsRequired = 1
 		heartImg.addGestureRecognizer(tap)
 		heartImg.userInteractionEnabled = true
+		
+		let tap1 = UITapGestureRecognizer(target: self, action: "sendUser:")
+		tap1.numberOfTapsRequired = 1
+		profileImg.addGestureRecognizer(tap1)
+		
+		
 	}
 	
 	override func drawRect(rect: CGRect) {
@@ -48,9 +55,24 @@ class PostCell: UITableViewCell {
 	}
 	
 	func configureCell(post: Post, img: UIImage?) {
+		
+		
 		self._post = post
+		userRef = DataService.ds.REF_USERS.childByAppendingPath(post.userKey)
+			userRef.observeEventType(.Value, withBlock: { snapshot in
+				if let userDict = snapshot.value as? Dictionary<String,AnyObject> {
+					let username = userDict["username"] as! String
+					self.usernameLabl.text = username
+				}
+			
+		
+		})
+		print(userRef)
+		let url = userRef.childByAppendingPath("profileImageUrl")
+		print(url)
 		likeRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").childByAppendingPath(post.postKey)
-		self.usernameLabl.text = post.username
+		
+		//self.usernameLabl.text = username
 		self.title.text = post.postDescription
 		self.likesLabel.text = "\(post.likes)"
 		
@@ -62,6 +84,7 @@ class PostCell: UITableViewCell {
 				self.profileImg.image = pImg
 				}
 			})
+		
 		
 			if img != nil {
 				self.mainImg.image = img
@@ -108,6 +131,10 @@ class PostCell: UITableViewCell {
 				}
 			})
 		}
+	func sendUser(sender: UITapGestureRecognizer) {
+		//userRef.
+	}
+	
 	
 	
 	

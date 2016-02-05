@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -151,7 +151,7 @@
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6Mg-wf-ggc">
                                                                     <rect key="frame" x="0.0" y="0.0" width="518" height="70"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1240224_542524825803330_1387862582_n" translatesAutoresizingMaskIntoConstraints="NO" id="UQq-Kx-jW3">
+                                                                        <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1240224_542524825803330_1387862582_n" translatesAutoresizingMaskIntoConstraints="NO" id="UQq-Kx-jW3">
                                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                             <gestureRecognizers/>
                                                                             <constraints>
@@ -244,7 +244,7 @@
                                             <outlet property="profileImg" destination="UQq-Kx-jW3" id="rBK-k8-12Z"/>
                                             <outlet property="title" destination="ugu-so-IPV" id="RjP-wb-ZsF"/>
                                             <outlet property="usernameLabl" destination="kkK-cC-GsJ" id="9c2-rh-6n2"/>
-                                            <segue destination="DaO-cp-85K" kind="show" identifier="showImageDetail" id="ZPb-dh-bng"/>
+                                            <segue destination="M2E-Pe-3SH" kind="show" identifier="showProfile" id="Meh-DZ-roR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -267,52 +267,52 @@
             </objects>
             <point key="canvasLocation" x="4338" y="468"/>
         </scene>
-        <!--Image DetailVC-->
-        <scene sceneID="Ad6-sK-jeo">
+        <!--ProfileVC-->
+        <scene sceneID="yt7-wy-Cho">
             <objects>
-                <viewController id="DaO-cp-85K" customClass="ImageDetailVC" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M2E-Pe-3SH" customClass="ProfileVC" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="7gF-sY-MID"/>
-                        <viewControllerLayoutGuide type="bottom" id="ADX-Ru-hRr"/>
+                        <viewControllerLayoutGuide type="top" id="Zy0-q9-pRY"/>
+                        <viewControllerLayoutGuide type="bottom" id="iVB-sF-DLW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="J3h-f1-Jb9">
+                    <view key="view" contentMode="scaleToFill" id="GdF-eI-DJA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YVp-qA-rbD">
-                                <rect key="frame" x="0.0" y="114" width="600" height="365.5"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Gmc-db-WkX" appends="YES" id="Pz4-R2-UIy"/>
-                                </connections>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iV3-QT-NbS">
+                                <rect key="frame" x="48" y="85" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="pkP-HM-Laa"/>
+                                    <constraint firstAttribute="width" constant="100" id="x31-PD-E9N"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2v-VE-rrw">
-                                <rect key="frame" x="20" y="489.5" width="560" height="21.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTO-6a-Rhy">
+                                <rect key="frame" x="181" y="85" width="79" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="79" id="syX-hG-zC3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YVp-qA-rbD" firstAttribute="top" secondItem="7gF-sY-MID" secondAttribute="bottom" constant="50" id="4y7-Yg-Zb8"/>
-                            <constraint firstItem="p2v-VE-rrw" firstAttribute="leading" secondItem="J3h-f1-Jb9" secondAttribute="leadingMargin" id="9J8-F4-ViK"/>
-                            <constraint firstItem="p2v-VE-rrw" firstAttribute="trailing" secondItem="J3h-f1-Jb9" secondAttribute="trailingMargin" id="KUb-dS-fjm"/>
-                            <constraint firstItem="p2v-VE-rrw" firstAttribute="top" secondItem="YVp-qA-rbD" secondAttribute="bottom" constant="10" id="Mdw-Xt-8Ie"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="YVp-qA-rbD" secondAttribute="trailing" constant="-20" id="VSz-OG-Og7"/>
-                            <constraint firstItem="YVp-qA-rbD" firstAttribute="leading" secondItem="J3h-f1-Jb9" secondAttribute="leadingMargin" constant="-20" id="uUg-e6-LJ2"/>
-                            <constraint firstItem="ADX-Ru-hRr" firstAttribute="top" secondItem="p2v-VE-rrw" secondAttribute="bottom" constant="40" id="x5d-pT-ly0"/>
+                            <constraint firstItem="iV3-QT-NbS" firstAttribute="top" secondItem="Zy0-q9-pRY" secondAttribute="bottom" constant="65" id="7YG-E3-BG2"/>
+                            <constraint firstItem="xTO-6a-Rhy" firstAttribute="top" secondItem="iV3-QT-NbS" secondAttribute="top" id="JYw-RJ-lq1"/>
+                            <constraint firstItem="xTO-6a-Rhy" firstAttribute="leading" secondItem="iV3-QT-NbS" secondAttribute="trailing" constant="33" id="SAb-bg-Bww"/>
+                            <constraint firstItem="xTO-6a-Rhy" firstAttribute="top" secondItem="Zy0-q9-pRY" secondAttribute="bottom" constant="65" id="eAf-me-eZT"/>
+                            <constraint firstItem="iV3-QT-NbS" firstAttribute="leading" secondItem="GdF-eI-DJA" secondAttribute="leadingMargin" constant="28" id="pGm-fE-wdm"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="image" destination="YVp-qA-rbD" id="nbC-qG-1wC"/>
-                        <outlet property="label" destination="p2v-VE-rrw" id="fze-Re-TqM"/>
+                        <outlet property="profileImg" destination="iV3-QT-NbS" id="Y9v-0K-J4t"/>
+                        <outlet property="usernameLbl" destination="xTO-6a-Rhy" id="iFe-x8-qKK"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kV7-FM-b0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pinchGestureRecognizer id="Gmc-db-WkX"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MKH-E6-i1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5110" y="468"/>
+            <point key="canvasLocation" x="5116" y="468"/>
         </scene>
         <!--Add Image-->
         <scene sceneID="INK-TH-iwM">
@@ -347,7 +347,7 @@
                                             <action selector="makePost:" destination="cHE-5e-1V3" eventType="touchUpInside" id="qMY-lR-6zN"/>
                                         </connections>
                                     </button>
-                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1454108964_icon-image" translatesAutoresizingMaskIntoConstraints="NO" id="SkE-7Z-7Vc">
+                                    <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instagram1" translatesAutoresizingMaskIntoConstraints="NO" id="SkE-7Z-7Vc">
                                         <rect key="frame" x="155" y="50" width="250" height="250"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -506,9 +506,9 @@
     </scenes>
     <resources>
         <image name="1240224_542524825803330_1387862582_n" width="160" height="160"/>
-        <image name="1454108964_icon-image" width="128" height="128"/>
         <image name="Camera-50" width="25" height="25"/>
         <image name="Home-50" width="25" height="25"/>
         <image name="heart-empty" width="150" height="147"/>
+        <image name="instagram1" width="512" height="512"/>
     </resources>
 </document>

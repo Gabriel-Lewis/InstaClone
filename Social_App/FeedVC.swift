@@ -17,14 +17,18 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	@IBOutlet weak var feedTV: UITableView!
 	
 	var posts = [Post]()
+	var post: Post!
 	var user: User!
 	static var imageCache = NSCache()
+	var cell: PostCell!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+
+
 		feedTV.delegate = self
 		feedTV.dataSource = self
+		
 		DataService.ds.REF_POSTS.observeEventType(.Value, withBlock: { snapShot in
 			
 			if let snapshots = snapShot.children.allObjects as? [FDataSnapshot] {
@@ -40,7 +44,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 				}
 			}
 			self.sortList()
-			self.feedTV.reloadData()
 		})
 	}
 	
@@ -64,6 +67,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 			}
 			
 			cell.configureCell(post, img: img)
+			
 			return cell
 			
 		} else {
@@ -71,15 +75,22 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		}
 	}
 	
+	func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+		
+	}
 	
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-		if segue.identifier == "showImageDetail" {
-			let destination = segue.destinationViewController as? ImageDetailVC
+		
+		if segue.identifier == "showProfile" {
+			let destination = segue.destinationViewController as? ProfileVC
 			let cell = sender as! PostCell
 			let selectedRow = feedTV.indexPathForCell(cell)
-			destination!.eventData = selectedRow
+			let user1 = posts[(selectedRow?.row)!].userKey
+			destination!.userKey = user1
+			
 		}
+		
 	}
 	
 	
@@ -87,9 +98,13 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		posts.sortInPlace() { $0.date > $1.date }
 		self.feedTV.reloadData()
 	}
+	
+	
 
 	
 	
 	
 	
 }
+
+

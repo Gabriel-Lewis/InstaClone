@@ -19,6 +19,7 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 	var postRef: Firebase!
 	var _post: Post!
 	
+	
 	@IBOutlet weak var imageSelectorBG: UIImageView!
 	@IBOutlet weak var postField: materialTextField!
 	
@@ -66,7 +67,6 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 											if let imgLink = images["direct_link"] as? String {
 												let finalLink = "http://\(imgLink)"
 												self.postToFirebase(finalLink)
-												//addPost(postref)
 											}
 										}
 									}
@@ -96,14 +96,15 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 	
 	
 	func postToFirebase(imgUrl: String?)  {
-		
+		let uid = NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) as! String
 		let now = NSDate()
 		var post: Dictionary<String, AnyObject> = [
 			"description": postField.text!,
 			"likes": 0,
 			"username": NSUserDefaults.standardUserDefaults().objectForKey(USERNAME)!,
 			"profileImgUrl": NSUserDefaults.standardUserDefaults().objectForKey("profileImageUrl")!,
-			"date": "\(now)"
+			"date": "\(now)",
+			"userKey": "\(uid)"
 		]
 		
 		
@@ -116,8 +117,9 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 				FireBase.observeEventType(.Value, withBlock: { snapshot in
 					if snapshot.exists() {
 						self.addPost(snapshot.key)
-					}
-				})
+						
+				}
+			})
 		}
 
 		postField.text = ""
@@ -129,8 +131,9 @@ class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCo
 		let post = post
 		postRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("posts").childByAppendingPath(post)
 		postRef.setValue(true)
-			
+		
 	}
+	
 	
 	
 	

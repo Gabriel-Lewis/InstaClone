@@ -34,14 +34,22 @@ class ImageDetailVC: UIViewController {
 							self.posts.append(post)
 						}
 					}
+					
 				}
+				self.sortList()
 				self.configureView(self.posts[self.eventData.row])
 			})
+		
     }
 	
 	func configureView(post: Post) {
 		label.text = post.postDescription
 		let url = post.imageURL
 		image.image = FeedVC.imageCache.objectForKey(url!) as? UIImage
+	}
+	
+	func sortList() {
+		posts.sortInPlace() { $0.date > $1.date }
+		
 	}
 }
