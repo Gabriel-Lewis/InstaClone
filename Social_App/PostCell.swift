@@ -43,9 +43,6 @@ class PostCell: UITableViewCell {
 		heartImg.addGestureRecognizer(tap)
 		heartImg.userInteractionEnabled = true
 		
-		let tap1 = UITapGestureRecognizer(target: self, action: "sendUser:")
-		tap1.numberOfTapsRequired = 1
-		profileImg.addGestureRecognizer(tap1)
 		
 		
 	}
