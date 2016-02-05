@@ -63,28 +63,24 @@ class PostCell: UITableViewCell {
 				if let userDict = snapshot.value as? Dictionary<String,AnyObject> {
 					let username = userDict["username"] as! String
 					self.usernameLabl.text = username
+					let profile = userDict["profileImageUrl"] as! String
+					Alamofire.request(.GET, profile).validate(contentType: ["image/*"]).response(completionHandler: {
+						request, response, data, err in
+						
+						if err == nil {
+							let pImg = UIImage(data: data!)!
+							self.profileImg.image = pImg
+						}
+					})
 				}
 			
 		
 		})
-		print(userRef)
-		let url = userRef.childByAppendingPath("profileImageUrl")
-		print(url)
-		likeRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").childByAppendingPath(post.postKey)
 		
-		//self.usernameLabl.text = username
+		
+		likeRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").childByAppendingPath(post.postKey)
 		self.title.text = post.postDescription
 		self.likesLabel.text = "\(post.likes)"
-		
-		Alamofire.request(.GET, post.profileImageURL!).validate(contentType: ["image/*"]).response(completionHandler: {
-			request, response, data, err in
-			
-			if err == nil {
-				let pImg = UIImage(data: data!)!
-				self.profileImg.image = pImg
-				}
-			})
-		
 		
 			if img != nil {
 				self.mainImg.image = img
@@ -131,9 +127,6 @@ class PostCell: UITableViewCell {
 				}
 			})
 		}
-	func sendUser(sender: UITapGestureRecognizer) {
-		//userRef.
-	}
 	
 	
 	
