@@ -14,6 +14,9 @@ class PersonalProfileVC: UIViewController {
 
 	var userKey: String?
 	
+	@IBOutlet weak var profileImage: UIImageView!
+	@IBOutlet weak var usernameLbl: UILabel!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -25,8 +28,16 @@ class PersonalProfileVC: UIViewController {
 			if let userDict = snapshot.value as? Dictionary<String,AnyObject> {
 				let username = userDict["username"] as! String
 				let profileimgurl = userDict["profileImageUrl"] as! String
-				print(username)
-				print(profileimgurl)
+				self.usernameLbl.text = username
+				
+				Alamofire.request(.GET, profileimgurl).validate(contentType: ["image/*"]).response(completionHandler: {  request, response, data, err in
+				
+					if err == nil {
+						self.profileImage.image = UIImage(data: data!)
+						
+					}
+				
+				})
 			}
 		})
     }

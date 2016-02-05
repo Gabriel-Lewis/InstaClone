@@ -12,7 +12,7 @@ import Firebase
 
 class ProfileVC: UIViewController {
 	var user: User!
-	var userKey = ""
+	var userKey: String!
 	
 	@IBOutlet weak var profileImg: UIImageView!
 	@IBOutlet weak var usernameLbl: UILabel!
