@@ -317,7 +317,7 @@
         <!--Add Image-->
         <scene sceneID="INK-TH-iwM">
             <objects>
-                <viewController id="cHE-5e-1V3" customClass="photoVC" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cHE-5e-1V3" customClass="UploadVC" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uI9-nV-rra"/>
                         <viewControllerLayoutGuide type="bottom" id="LgP-i6-7Zw"/>
@@ -396,7 +396,7 @@
         <!--Profile-->
         <scene sceneID="PaB-bB-A5K">
             <objects>
-                <viewController id="XeW-2Q-Erl" sceneMemberID="viewController">
+                <viewController id="XeW-2Q-Erl" customClass="PersonalProfileVC" customModule="Social_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BgE-X6-ctw"/>
                         <viewControllerLayoutGuide type="bottom" id="SaI-XA-jYA"/>
@@ -404,6 +404,11 @@
                     <view key="view" contentMode="scaleToFill" id="Hg5-Gu-PXm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b69-V1-yVm">
+                                <rect key="frame" x="20" y="28" width="113" height="105"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profileimg" id="ekS-Fa-CbZ"/>

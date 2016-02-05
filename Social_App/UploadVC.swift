@@ -11,7 +11,7 @@ import Alamofire
 import Firebase
 
 
-class photoVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 	
 	
 	var imagePicker: UIImagePickerController!

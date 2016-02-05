@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		6A1C44486DA909FADA9FAB99 /* Pods_Social_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D26BCB462C21BB426CC415 /* Pods_Social_App.framework */; };
 		7FFCA7BEDF87A601ACE4408A /* Pods_Social_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8E1BDE662E94891A1B55D9E /* Pods_Social_App.framework */; };
+		C0145C8E1C65067700F85DD6 /* PersonalProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0145C8D1C65067700F85DD6 /* PersonalProfileVC.swift */; };
 		C0215A851C55691100D2BB61 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0215A841C55691100D2BB61 /* DataService.swift */; };
 		C02BE6351C5AAE3200915388 /* UsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02BE6341C5AAE3200915388 /* UsernameVC.swift */; };
 		C02BE6371C5AD86B00915388 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02BE6361C5AD86B00915388 /* User.swift */; };
-		C02BE6391C5BD12D00915388 /* photoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02BE6381C5BD12D00915388 /* photoVC.swift */; };
+		C02BE6391C5BD12D00915388 /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02BE6381C5BD12D00915388 /* UploadVC.swift */; };
 		C03A344D1C5C16D70095277C /* ImageDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03A344C1C5C16D70095277C /* ImageDetailVC.swift */; };
 		C0BB16DC1C54167D008C5168 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB16DB1C54167D008C5168 /* AppDelegate.swift */; };
 		C0BB16DE1C54167D008C5168 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB16DD1C54167D008C5168 /* ViewController.swift */; };
@@ -34,10 +35,11 @@
 
 /* Begin PBXFileReference section */
 		90D26BCB462C21BB426CC415 /* Pods_Social_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0145C8D1C65067700F85DD6 /* PersonalProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalProfileVC.swift; sourceTree = "<group>"; };
 		C0215A841C55691100D2BB61 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C02BE6341C5AAE3200915388 /* UsernameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameVC.swift; sourceTree = "<group>"; };
 		C02BE6361C5AD86B00915388 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		C02BE6381C5BD12D00915388 /* photoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = photoVC.swift; sourceTree = "<group>"; };
+		C02BE6381C5BD12D00915388 /* UploadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
 		C03A344C1C5C16D70095277C /* ImageDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailVC.swift; sourceTree = "<group>"; };
 		C0BB16D81C54167D008C5168 /* Social_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Social_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BB16DB1C54167D008C5168 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,7 +160,8 @@
 				C02BE6341C5AAE3200915388 /* UsernameVC.swift */,
 				C0E08FFB1C6037390007A0DD /* ProfileVC.swift */,
 				C0E26AF91C569BB600C4F57D /* FeedVC.swift */,
-				C02BE6381C5BD12D00915388 /* photoVC.swift */,
+				C0145C8D1C65067700F85DD6 /* PersonalProfileVC.swift */,
+				C02BE6381C5BD12D00915388 /* UploadVC.swift */,
 				C03A344C1C5C16D70095277C /* ImageDetailVC.swift */,
 			);
 			name = Controller;
@@ -307,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0145C8E1C65067700F85DD6 /* PersonalProfileVC.swift in Sources */,
 				C0E08FFC1C6037390007A0DD /* ProfileVC.swift in Sources */,
 				C0BB16F11C541749008C5168 /* MaterialView.swift in Sources */,
 				C0215A851C55691100D2BB61 /* DataService.swift in Sources */,
@@ -319,7 +323,7 @@
 				C02BE6371C5AD86B00915388 /* User.swift in Sources */,
 				C03A344D1C5C16D70095277C /* ImageDetailVC.swift in Sources */,
 				C0CFB3721C56BB50008515D9 /* Posts.swift in Sources */,
-				C02BE6391C5BD12D00915388 /* photoVC.swift in Sources */,
+				C02BE6391C5BD12D00915388 /* UploadVC.swift in Sources */,
 				C0BB16DC1C54167D008C5168 /* AppDelegate.swift in Sources */,
 				C0BB16F51C541A93008C5168 /* MaterialButton.swift in Sources */,
 			);
