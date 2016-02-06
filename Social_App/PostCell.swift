@@ -48,7 +48,7 @@ class PostCell: UITableViewCell {
 	}
 	
 	override func drawRect(rect: CGRect) {
-		profileImg.layer.cornerRadius = 10
+		profileImg.layer.cornerRadius = profileImg.frame.size.width / 2
 	}
 	
 	func configureCell(post: Post, img: UIImage?) {
