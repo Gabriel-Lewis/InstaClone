@@ -14,6 +14,7 @@ class PersonalProfileVC: UIViewController {
 
 	var userKey: String?
 	
+	@IBOutlet weak var photoCollectionCell: UICollectionView!
 	@IBOutlet weak var profileImage: UIImageView!
 	@IBOutlet weak var usernameLbl: UILabel!
 	

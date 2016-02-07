@@ -425,18 +425,42 @@
                                     <constraint firstAttribute="width" constant="100" id="YOM-0d-FNh"/>
                                 </constraints>
                             </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="za4-Fo-YIp">
+                                <rect key="frame" x="0.0" y="183" width="600" height="368"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Sox-MI-wZn">
+                                    <size key="itemSize" width="120" height="121"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gRG-mQ-Zmc">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="121"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="121"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Mol-ha-g82" firstAttribute="trailing" secondItem="Hg5-Gu-PXm" secondAttribute="trailingMargin" id="2RB-nZ-107"/>
+                            <constraint firstItem="za4-Fo-YIp" firstAttribute="leading" secondItem="Hg5-Gu-PXm" secondAttribute="leadingMargin" constant="-20" id="6XK-SI-EO2"/>
+                            <constraint firstItem="SaI-XA-jYA" firstAttribute="top" secondItem="za4-Fo-YIp" secondAttribute="bottom" id="B7H-45-4Yf"/>
                             <constraint firstItem="Mol-ha-g82" firstAttribute="top" secondItem="BgE-X6-ctw" secondAttribute="bottom" constant="40" id="Epm-nW-if2"/>
                             <constraint firstItem="b69-V1-yVm" firstAttribute="leading" secondItem="Hg5-Gu-PXm" secondAttribute="leadingMargin" id="Sai-H3-dS9"/>
                             <constraint firstItem="Mol-ha-g82" firstAttribute="leading" secondItem="b69-V1-yVm" secondAttribute="trailing" constant="25" id="r52-CW-vCc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="za4-Fo-YIp" secondAttribute="trailing" constant="-20" id="uB3-lb-WQl"/>
                             <constraint firstItem="b69-V1-yVm" firstAttribute="top" secondItem="BgE-X6-ctw" secondAttribute="bottom" constant="40" id="vvU-v7-pLc"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profileimg" id="ekS-Fa-CbZ"/>
                     <connections>
+                        <outlet property="photoCollectionCell" destination="za4-Fo-YIp" id="Xf9-Nn-igO"/>
                         <outlet property="profileImage" destination="b69-V1-yVm" id="dmI-jX-sXb"/>
                         <outlet property="usernameLbl" destination="Mol-ha-g82" id="okF-c1-GfN"/>
                     </connections>
