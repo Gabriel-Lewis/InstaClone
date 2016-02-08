@@ -74,10 +74,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 			return PostCell()
 		}
 	}
-	
-	func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-		
-	}
+
 	
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

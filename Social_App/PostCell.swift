@@ -56,6 +56,7 @@ class PostCell: UITableViewCell {
 		
 		self._post = post
 		userRef = DataService.ds.REF_USERS.childByAppendingPath(post.userKey)
+		
 			userRef.observeEventType(.Value, withBlock: { snapshot in
 				if let userDict = snapshot.value as? Dictionary<String,AnyObject> {
 					let username = userDict["username"] as! String
@@ -70,10 +71,8 @@ class PostCell: UITableViewCell {
 						}
 					})
 				}
-			
 		
 		})
-		
 		
 		likeRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("likes").childByAppendingPath(post.postKey)
 		self.title.text = post.postDescription
@@ -124,6 +123,8 @@ class PostCell: UITableViewCell {
 				}
 			})
 		}
+	
+	
 	
 	
 	
