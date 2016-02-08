@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import Alamofire
 
-class PersonalProfileVC: UIViewController {
+class PersonalProfileVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
 	var userKey: String?
 	
@@ -42,6 +42,15 @@ class PersonalProfileVC: UIViewController {
 			}
 		})
     }
+	
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		
+		return CollectionViewCell()
+	}
+	
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return 1
+	}
 
 
 }
