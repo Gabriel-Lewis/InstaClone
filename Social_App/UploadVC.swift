@@ -101,8 +101,6 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 		var post: Dictionary<String, AnyObject> = [
 			"description": postField.text!,
 			"likes": 0,
-			"username": NSUserDefaults.standardUserDefaults().objectForKey(USERNAME)!,
-			"profileImgUrl": NSUserDefaults.standardUserDefaults().objectForKey("profileImageUrl")!,
 			"date": "\(now)",
 			"userKey": "\(uid)"
 		]

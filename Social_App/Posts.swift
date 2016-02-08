@@ -83,13 +83,13 @@ class Post {
 			self._postDescription = desc
 		}
 		
-		if let username = dictionary["username"] as? String {
-			self._username = username
-		}
+//		if let username = dictionary["username"] as? String {
+//			self._username = username
+//		}
 		
-		if let profileImageURL = dictionary["profileImgUrl"] as? String {
-			self._profileImageURL = profileImageURL
-		}
+//		if let profileImageURL = dictionary["profileImgUrl"] as? String {
+//			self._profileImageURL = profileImageURL
+//		}
 		if let userKey = dictionary["userKey"] as? String {
 			self._userKey = userKey
 		}
