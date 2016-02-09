@@ -19,12 +19,13 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 	@IBOutlet weak var userNameLbl: UITextField!
 	@IBOutlet weak var profileImage: UIImageView!
 	
+	@IBOutlet weak var buttonLabel: UIButton!
 	@IBAction func createUser(Sender: AnyObject){
 		
 		let usernametext = userNameLbl.text?.lowercaseString
 	
 		DataService.ds.REF_USER_CURRENT.childByAppendingPath("username").setValue(usernametext)
-		
+		buttonLabel.hidden = true
 		if let img = profileImage.image where imageSelected == true {
 			
 			let urlStr = "https://api.imageshack.com/v2/images"

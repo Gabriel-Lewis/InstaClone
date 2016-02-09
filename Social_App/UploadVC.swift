@@ -19,6 +19,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 	var postRef: Firebase!
 	var _post: Post!
 	
+	@IBOutlet weak var imagelabel: UILabel!
 	
 	@IBOutlet weak var imageSelectorBG: UIImageView!
 	@IBOutlet weak var postField: materialTextField!
@@ -89,6 +90,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
 		imagePicker.dismissViewControllerAnimated(true, completion: nil)
 		imageSelectorBG.image = image
+		imagelabel.hidden = true
 		imageSelected = true
 		
 	}
@@ -122,6 +124,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 
 		postField.text = ""
 		imageSelectorBG.image = nil
+		imagelabel.hidden = false
 		imageSelected = false
 	}
 	
