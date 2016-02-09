@@ -26,7 +26,7 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 	
 		DataService.ds.REF_USER_CURRENT.childByAppendingPath("username").setValue(usernametext)
 		
-		buttonLabel.hidden = true
+		
 		
 		pictureUpload()
 		
@@ -36,6 +36,7 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 	
 	@IBAction func ImagePicker(sender: AnyObject) {
 		presentViewController(imagePicker, animated: true, completion: nil)
+		buttonLabel.hidden = true
 	}
 	
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
