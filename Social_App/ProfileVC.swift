@@ -22,53 +22,16 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		profileImg.layer.cornerRadius = profileImg.frame.size.width / 2
 		photoCollection.dataSource = self
 		photoCollection.delegate = self
 		
-		DataService.ds.REF_USERS.childByAppendingPath(userKey).childByAppendingPath("posts").observeEventType(.ChildAdded, withBlock: { snap in
-			let postkey = snap.key
-			
-			DataService.ds.REF_POSTS.childByAppendingPath(postkey).observeEventType(.Value, withBlock: { snap in
-				
-				
-				
-				if let postDict = snap.value as? Dictionary<String,AnyObject> {
-					
-					let post = Post(postKey: snap.key, dictionary: postDict)
-					self.posts.append(post)
-				}
-				self.sortList()
-			})
-			
-		})
-		
-			let userRef = DataService.ds.REF_USERS.childByAppendingPath(userKey)
-		
-		userRef.observeEventType(.Value, withBlock: { snapshot in
-		
-			if let userDict = snapshot.value as? Dictionary<String,AnyObject> {
-				let username = userDict["username"] as! String
-				self.usernameLbl.text = username
-				let profileImgUrl = userDict["profileImageUrl"] as! String
-				
-				Alamofire.request(.GET, profileImgUrl).validate(contentType: ["image/*"]).response(completionHandler: {
-					request, response, data, err in
-					
-					if err == nil {
-						let pImg = UIImage(data: data!)!
-						self.profileImg.image = pImg
-					}
-				})
-				
-				
-			}
-
-		})
-		
-		
+		getPosts()
+		getUser()
 		
 		}
+	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 		
 		let numberOfCell: CGFloat = 3
@@ -80,7 +43,6 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 	
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		
 		
 		
 		let post = posts[indexPath.row]
@@ -106,6 +68,48 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 	func sortList() {
 		posts.sortInPlace() { $0.date > $1.date }
 		self.photoCollection.reloadData()
+	}
+	
+	func getPosts() {
+		DataService.ds.REF_USERS.childByAppendingPath(userKey).childByAppendingPath("posts").observeEventType(.ChildAdded, withBlock: { snap in
+			let postkey = snap.key
+			
+			DataService.ds.REF_POSTS.childByAppendingPath(postkey).observeEventType(.Value, withBlock: { snap in
+				
+				
+				
+				if let postDict = snap.value as? Dictionary<String,AnyObject> {
+					
+					let post = Post(postKey: snap.key, dictionary: postDict)
+					self.posts.append(post)
+				}
+				self.sortList()
+			})
+			
+		})
+		
+	}
+	
+	func getUser() {
+		let userRef = DataService.ds.REF_USERS.childByAppendingPath(userKey)
+		
+		userRef.observeEventType(.Value, withBlock: { snapshot in
+			
+			if let userDict = snapshot.value as? Dictionary<String,AnyObject> {
+				let username = userDict["username"] as! String
+				self.usernameLbl.text = username
+				let profileImgUrl = userDict["profileImageUrl"] as! String
+				
+				Alamofire.request(.GET, profileImgUrl).validate(contentType: ["image/*"]).response(completionHandler: {
+					request, response, data, err in
+					
+					if err == nil {
+						let pImg = UIImage(data: data!)!
+						self.profileImg.image = pImg
+					}
+				})
+			}
+		})
 	}
 	
 
