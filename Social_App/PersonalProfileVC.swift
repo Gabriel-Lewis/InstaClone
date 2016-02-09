@@ -25,41 +25,11 @@ class PersonalProfileVC: UIViewController, UICollectionViewDataSource, UICollect
 		photoCollection.dataSource = self
 		photoCollection.delegate = self
 		
-		DataService.ds.REF_USER_CURRENT.childByAppendingPath("posts").observeEventType(.ChildAdded, withBlock: { snap in
-			let postkey = snap.key
-			
-			DataService.ds.REF_POSTS.childByAppendingPath(postkey).observeEventType(.Value, withBlock: { snap in
-			
-				
-					
-				if let postDict = snap.value as? Dictionary<String,AnyObject> {
-					
-				let post = Post(postKey: snap.key, dictionary: postDict)
-				self.posts.append(post)
-					}
-				self.sortList()
-			})
-
-		})
+		
+		getPosts()
+		getUser()
 		
 		
-		DataService.ds.REF_USER_CURRENT.observeEventType(.Value, withBlock: { snapshot in
-			
-			if let userDict = snapshot.value as? Dictionary<String,AnyObject> {
-				let username = userDict["username"] as! String
-				let profileimgurl = userDict["profileImageUrl"] as! String
-				self.usernameLbl.text = username
-				
-				Alamofire.request(.GET, profileimgurl).validate(contentType: ["image/*"]).response(completionHandler: {  request, response, data, err in
-				
-					if err == nil {
-						self.profileImage.image = UIImage(data: data!)
-						
-					}
-				})
-				
-			}
-		})
     }
 	
 	
@@ -100,6 +70,45 @@ class PersonalProfileVC: UIViewController, UICollectionViewDataSource, UICollect
 	func sortList() {
 		posts.sortInPlace() { $0.date > $1.date }
 		self.photoCollection.reloadData()
+	}
+	
+	func getPosts() {
+		DataService.ds.REF_USER_CURRENT.childByAppendingPath("posts").observeEventType(.ChildAdded, withBlock: { snap in
+			let postkey = snap.key
+			
+			DataService.ds.REF_POSTS.childByAppendingPath(postkey).observeEventType(.Value, withBlock: { snap in
+				
+				
+				
+				if let postDict = snap.value as? Dictionary<String,AnyObject> {
+					
+					let post = Post(postKey: snap.key, dictionary: postDict)
+					self.posts.append(post)
+				}
+				self.sortList()
+			})
+			
+		})
+	}
+	
+	func getUser(){
+		DataService.ds.REF_USER_CURRENT.observeEventType(.Value, withBlock: { snapshot in
+			
+			if let userDict = snapshot.value as? Dictionary<String,AnyObject> {
+				let username = userDict["username"] as! String
+				let profileimgurl = userDict["profileImageUrl"] as! String
+				self.usernameLbl.text = username
+				
+				Alamofire.request(.GET, profileimgurl).validate(contentType: ["image/*"]).response(completionHandler: {  request, response, data, err in
+					
+					if err == nil {
+						self.profileImage.image = UIImage(data: data!)
+						
+					}
+				})
+				
+			}
+		})
 	}
 
 

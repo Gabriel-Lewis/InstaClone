@@ -36,7 +36,6 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 		
 		let numberOfCell: CGFloat = 3
 		let cellWidth = (self.photoCollection.bounds.size.width / numberOfCell) - 1
-		
 		return CGSizeMake(cellWidth, cellWidth)
 	}
 	
@@ -44,9 +43,7 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
-		
 		let post = posts[indexPath.row]
-		
 		if let cell = photoCollection.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as? CollectionViewCell {
 			
 			cell.configureCell(post)
