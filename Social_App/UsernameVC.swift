@@ -22,16 +22,16 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 	@IBOutlet weak var buttonLabel: UIButton!
 	@IBAction func createUser(Sender: AnyObject){
 		
-		let usernametext = userNameLbl.text?.lowercaseString
-	
+		if userNameLbl.text != "" && imageSelected == true {
+		let usernametext = userNameLbl.text!.lowercaseString
 		DataService.ds.REF_USER_CURRENT.childByAppendingPath("username").setValue(usernametext)
-		
-		
-		
 		pictureUpload()
 		
 		NSUserDefaults.standardUserDefaults().setObject(usernametext, forKey: USERNAME)
 		performSegueWithIdentifier("loggedInWithUsername", sender: nil)
+		} else {
+			showErrorAlert("Missing Username/Profile Image", msg: "Select a profile image, and username to continue")
+		}
 	}
 	
 	@IBAction func ImagePicker(sender: AnyObject) {
@@ -95,6 +95,13 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 					}
 			})
 		}
+	}
+	
+	func showErrorAlert(title: String, msg: String) {
+		let alert = UIAlertController(title: title, message: msg, preferredStyle: .Alert)
+		let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+		alert.addAction(action)
+		presentViewController(alert, animated: true, completion: nil)
 	}
 	
 	

@@ -20,11 +20,11 @@ class PersonalProfileVC: UIViewController, UICollectionViewDataSource, UICollect
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
 		profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
 		
 		photoCollection.dataSource = self
 		photoCollection.delegate = self
-		
 		
 		getPosts()
 		getUser()
@@ -77,8 +77,6 @@ class PersonalProfileVC: UIViewController, UICollectionViewDataSource, UICollect
 			let postkey = snap.key
 			
 			DataService.ds.REF_POSTS.childByAppendingPath(postkey).observeEventType(.Value, withBlock: { snap in
-				
-				
 				
 				if let postDict = snap.value as? Dictionary<String,AnyObject> {
 					
