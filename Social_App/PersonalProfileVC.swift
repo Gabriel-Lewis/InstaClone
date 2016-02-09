@@ -14,15 +14,15 @@ class PersonalProfileVC: UIViewController, UICollectionViewDataSource, UICollect
 	var posts = [Post]()
 	var userKey: String?
 	
-	@IBOutlet weak var photoCollectionCell: UICollectionView!
+	@IBOutlet weak var photoCollection: UICollectionView!
 	@IBOutlet weak var profileImage: UIImageView!
 	@IBOutlet weak var usernameLbl: UILabel!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		
-		photoCollectionCell.dataSource = self
-		photoCollectionCell.delegate = self
+		photoCollection.dataSource = self
+		photoCollection.delegate = self
 		
 		DataService.ds.REF_USER_CURRENT.childByAppendingPath("posts").observeEventType(.ChildAdded, withBlock: { snap in
 			let postkey = snap.key
@@ -61,18 +61,26 @@ class PersonalProfileVC: UIViewController, UICollectionViewDataSource, UICollect
 		})
     }
 	
+	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-		return CGSizeMake(105, 105)
+		
+		let numberOfCell: CGFloat = 3
+		let cellWidth = (self.photoCollection.bounds.size.width / numberOfCell) - 1
+		
+		return CGSizeMake(cellWidth, cellWidth)
 	}
+	
+	
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
+		
+		
 		let post = posts[indexPath.row]
 		
-		if let cell = photoCollectionCell.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as? CollectionViewCell {
-			
+		if let cell = photoCollection.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as? CollectionViewCell {
+	
 			cell.configureCell(post)
-			
 			return cell
 		}
 		else {
@@ -90,7 +98,7 @@ class PersonalProfileVC: UIViewController, UICollectionViewDataSource, UICollect
 	
 	func sortList() {
 		posts.sortInPlace() { $0.date > $1.date }
-		self.photoCollectionCell.reloadData()
+		self.photoCollection.reloadData()
 	}
 
 

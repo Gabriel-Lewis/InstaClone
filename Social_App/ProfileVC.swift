@@ -10,15 +10,38 @@ import UIKit
 import Alamofire
 import Firebase
 
-class ProfileVC: UIViewController {
+class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
 	var user: User!
 	var userKey: String!
+	var posts = [Post]()
+
 	
+	@IBOutlet weak var photoCollection: UICollectionView!
 	@IBOutlet weak var profileImg: UIImageView!
 	@IBOutlet weak var usernameLbl: UILabel!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		photoCollection.dataSource = self
+		photoCollection.delegate = self
+		
+		DataService.ds.REF_USERS.childByAppendingPath(userKey).childByAppendingPath("posts").observeEventType(.ChildAdded, withBlock: { snap in
+			let postkey = snap.key
+			
+			DataService.ds.REF_POSTS.childByAppendingPath(postkey).observeEventType(.Value, withBlock: { snap in
+				
+				
+				
+				if let postDict = snap.value as? Dictionary<String,AnyObject> {
+					
+					let post = Post(postKey: snap.key, dictionary: postDict)
+					self.posts.append(post)
+				}
+				self.sortList()
+			})
+			
+		})
 		
 			let userRef = DataService.ds.REF_USERS.childByAppendingPath(userKey)
 		
@@ -46,4 +69,44 @@ class ProfileVC: UIViewController {
 		
 		
 		}
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+		
+		let numberOfCell: CGFloat = 3
+		let cellWidth = (self.photoCollection.bounds.size.width / numberOfCell) - 1
+		
+		return CGSizeMake(cellWidth, cellWidth)
+	}
+	
+	
+	
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		
+		
+		
+		let post = posts[indexPath.row]
+		
+		if let cell = photoCollection.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as? CollectionViewCell {
+			
+			cell.configureCell(post)
+			return cell
+		}
+		else {
+			return UICollectionViewCell()
+		}
+	}
+	
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return posts.count
+	}
+	
+	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+		return 1
+	}
+	
+	func sortList() {
+		posts.sortInPlace() { $0.date > $1.date }
+		self.photoCollection.reloadData()
+	}
+	
+
 }

@@ -17,7 +17,9 @@ class CollectionViewCell: UICollectionViewCell {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
+		
 	}
+	
 	
 	var _post: Post!
 	
