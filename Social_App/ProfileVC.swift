@@ -22,7 +22,7 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		
+		profileImg.layer.cornerRadius = profileImg.frame.size.width / 2
 		photoCollection.dataSource = self
 		photoCollection.delegate = self
 		
