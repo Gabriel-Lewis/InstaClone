@@ -25,7 +25,38 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 		let usernametext = userNameLbl.text?.lowercaseString
 	
 		DataService.ds.REF_USER_CURRENT.childByAppendingPath("username").setValue(usernametext)
+		
 		buttonLabel.hidden = true
+		
+		pictureUpload()
+		
+		NSUserDefaults.standardUserDefaults().setObject(usernametext, forKey: USERNAME)
+		performSegueWithIdentifier("loggedInWithUsername", sender: nil)
+	}
+	
+	@IBAction func ImagePicker(sender: AnyObject) {
+		presentViewController(imagePicker, animated: true, completion: nil)
+	}
+	
+	func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+		dismissViewControllerAnimated(true, completion: nil)
+		profileImage.image = image
+		imageSelected = true
+	}
+	
+    override func viewDidLoad() {
+        super.viewDidLoad()
+		imagePicker = UIImagePickerController()
+		imagePicker.delegate = self
+    }
+	
+	func postProfileImageToFireB(url: String) {
+		NSUserDefaults.standardUserDefaults().setObject(url, forKey: "profileImageUrl")
+		DataService.ds.REF_USER_CURRENT.childByAppendingPath("profileImageUrl").setValue(url)
+	}
+	
+	func pictureUpload() {
+		
 		if let img = profileImage.image where imageSelected == true {
 			
 			let urlStr = "https://api.imageshack.com/v2/images"
@@ -63,29 +94,6 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 					}
 			})
 		}
-		NSUserDefaults.standardUserDefaults().setObject(usernametext, forKey: USERNAME)
-		performSegueWithIdentifier("loggedInWithUsername", sender: nil)
-	}
-	
-	@IBAction func ImagePicker(sender: AnyObject) {
-		presentViewController(imagePicker, animated: true, completion: nil)
-	}
-	
-	func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-		dismissViewControllerAnimated(true, completion: nil)
-		profileImage.image = image
-		imageSelected = true
-	}
-	
-    override func viewDidLoad() {
-        super.viewDidLoad()
-		imagePicker = UIImagePickerController()
-		imagePicker.delegate = self
-    }
-	
-	func postProfileImageToFireB(url: String) {
-		NSUserDefaults.standardUserDefaults().setObject(url, forKey: "profileImageUrl")
-		DataService.ds.REF_USER_CURRENT.childByAppendingPath("profileImageUrl").setValue(url)
 	}
 	
 	
