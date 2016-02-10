@@ -102,24 +102,27 @@ class PostCell: UITableViewCell {
 		}
 		
 	likeRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-		if let doesNotExist = snapshot.value as? NSNull {
-				self.heartImg.image = UIImage(named: "heart-empty")
+		if snapshot.exists() {
+			self.heartImg.image = UIImage(named: "heart-full")
+			
 			} else {
-				self.heartImg.image = UIImage(named: "heart-full")
+			self.heartImg.image = UIImage(named: "heart-empty")
 			}
 		})
 	}
 	
 	func likeTapped(sender: UITapGestureRecognizer) {
 			likeRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
-				if let doesNotExist = snapshot.value as? NSNull {
-					self.heartImg.image = UIImage(named: "heart-full")
-					self._post.adjustLikes(true)
-					self.likeRef.setValue(true)
-				} else {
+				if snapshot.exists() {
 					self.heartImg.image = UIImage(named: "heart-empty")
 					self._post.adjustLikes(false)
 					self.likeRef.removeValue()
+				} else {
+					self.heartImg.image = UIImage(named: "heart-full")
+					self._post.adjustLikes(true)
+					self.likeRef.setValue(true)
+					
+					
 				}
 			})
 		}
