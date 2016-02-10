@@ -268,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqw-e4-sIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4102" y="28"/>
+            <point key="canvasLocation" x="3880" y="-74"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="yt7-wy-Cho">
@@ -357,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKH-E6-i1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4887" y="28"/>
+            <point key="canvasLocation" x="4715" y="-68"/>
         </scene>
         <!--Add Image-->
         <scene sceneID="INK-TH-iwM">
@@ -449,7 +449,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3328" y="701"/>
+            <point key="canvasLocation" x="3073" y="812"/>
         </scene>
         <!--Profile-->
         <scene sceneID="PaB-bB-A5K">
@@ -538,7 +538,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4n1-74-Hj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3311" y="1366"/>
+            <point key="canvasLocation" x="2757" y="1786"/>
         </scene>
         <!--UsernameVC-->
         <scene sceneID="io1-5b-uhK">
@@ -630,7 +630,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DN2-Xy-ppn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3328" y="28"/>
+            <point key="canvasLocation" x="3041" y="-68"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="b2k-qe-qPj">
