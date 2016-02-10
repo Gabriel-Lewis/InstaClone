@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Social_App.xcodeproj">
+      location = "group:/Users/Gabriel/Desktop/Social_App/InstaClone.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

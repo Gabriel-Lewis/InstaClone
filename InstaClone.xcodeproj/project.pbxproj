@@ -43,7 +43,7 @@
 		C02BE6381C5BD12D00915388 /* UploadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
 		C03A344C1C5C16D70095277C /* ImageDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDetailVC.swift; sourceTree = "<group>"; };
 		C064B6001C67F26B00DA35C5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		C0BB16D81C54167D008C5168 /* Social_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Social_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0BB16D81C54167D008C5168 /* InstaClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BB16DB1C54167D008C5168 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0BB16DD1C54167D008C5168 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C0BB16E01C54167D008C5168 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		C0BB16D91C54167D008C5168 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C0BB16D81C54167D008C5168 /* Social_App.app */,
+				C0BB16D81C54167D008C5168 /* InstaClone.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,9 +193,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C0BB16D71C54167C008C5168 /* Social_App */ = {
+		C0BB16D71C54167C008C5168 /* InstaClone */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C0BB16EA1C54167D008C5168 /* Build configuration list for PBXNativeTarget "Social_App" */;
+			buildConfigurationList = C0BB16EA1C54167D008C5168 /* Build configuration list for PBXNativeTarget "InstaClone" */;
 			buildPhases = (
 				988320D30A8AD0843C1CF1EF /* Check Pods Manifest.lock */,
 				C0BB16D41C54167C008C5168 /* Sources */,
@@ -208,9 +208,9 @@
 			);
 			dependencies = (
 			);
-			name = Social_App;
+			name = InstaClone;
 			productName = Social_App;
-			productReference = C0BB16D81C54167D008C5168 /* Social_App.app */;
+			productReference = C0BB16D81C54167D008C5168 /* InstaClone.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -229,7 +229,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C0BB16D31C54167C008C5168 /* Build configuration list for PBXProject "Social_App" */;
+			buildConfigurationList = C0BB16D31C54167C008C5168 /* Build configuration list for PBXProject "InstaClone" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -242,7 +242,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C0BB16D71C54167C008C5168 /* Social_App */,
+				C0BB16D71C54167C008C5168 /* InstaClone */,
 			);
 		};
 /* End PBXProject section */
@@ -450,7 +450,7 @@
 				INFOPLIST_FILE = Social_App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.3.Social-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = InstaClone;
 			};
 			name = Debug;
 		};
@@ -466,14 +466,14 @@
 				INFOPLIST_FILE = Social_App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.3.Social-App";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = InstaClone;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C0BB16D31C54167C008C5168 /* Build configuration list for PBXProject "Social_App" */ = {
+		C0BB16D31C54167C008C5168 /* Build configuration list for PBXProject "InstaClone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0BB16E81C54167D008C5168 /* Debug */,
@@ -482,7 +482,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C0BB16EA1C54167D008C5168 /* Build configuration list for PBXNativeTarget "Social_App" */ = {
+		C0BB16EA1C54167D008C5168 /* Build configuration list for PBXNativeTarget "InstaClone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C0BB16EB1C54167D008C5168 /* Debug */,
