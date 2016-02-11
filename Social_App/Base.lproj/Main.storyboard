@@ -268,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqw-e4-sIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3880" y="-74"/>
+            <point key="canvasLocation" x="4692" y="-74"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="yt7-wy-Cho">
@@ -357,7 +357,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKH-E6-i1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4715" y="-68"/>
+            <point key="canvasLocation" x="5532" y="-74"/>
         </scene>
         <!--Add Image-->
         <scene sceneID="INK-TH-iwM">
@@ -449,7 +449,26 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3073" y="812"/>
+            <point key="canvasLocation" x="3853" y="590"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="Q1w-WJ-k2K">
+            <objects>
+                <viewController id="eCb-hn-KTL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mNC-Z8-b9L"/>
+                        <viewControllerLayoutGuide type="bottom" id="31N-HO-TpC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lmQ-gK-YPC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="Search" id="tte-RQ-X9e"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2vc-zN-pa3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3912" y="1278"/>
         </scene>
         <!--Profile-->
         <scene sceneID="PaB-bB-A5K">
@@ -538,7 +557,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4n1-74-Hj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2757" y="1786"/>
+            <point key="canvasLocation" x="3108" y="1638"/>
         </scene>
         <!--UsernameVC-->
         <scene sceneID="io1-5b-uhK">
@@ -606,7 +625,7 @@
                         <outlet property="buttonLabel" destination="4rW-kW-ziP" id="pGi-Y0-uO2"/>
                         <outlet property="profileImage" destination="5KM-2U-3Qf" id="taY-m5-tN2"/>
                         <outlet property="userNameLbl" destination="1Ik-tQ-P1N" id="au9-zf-QAK"/>
-                        <segue destination="SdD-sB-0zO" kind="show" identifier="loggedInWithUsername" id="q1P-8b-tdZ"/>
+                        <segue destination="VIM-qB-bN9" kind="show" identifier="loggedInWithUsername" id="FOY-53-a8p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tvo-0l-eZv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -630,32 +649,34 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DN2-Xy-ppn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3041" y="-68"/>
+            <point key="canvasLocation" x="3853" y="-68"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="b2k-qe-qPj">
+        <scene sceneID="WI4-ep-on4">
             <objects>
-                <tabBarController storyboardIdentifier="FeedVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SdD-sB-0zO" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="FeedVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VIM-qB-bN9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="7ne-EG-GtR">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="t1j-f2-ZE5">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="HQI-fi-ID3" kind="relationship" relationship="viewControllers" id="iqC-ZU-eeh"/>
-                        <segue destination="cHE-5e-1V3" kind="relationship" relationship="viewControllers" id="zRG-yQ-U2j"/>
-                        <segue destination="XeW-2Q-Erl" kind="relationship" relationship="viewControllers" id="MQ3-Lb-xbt"/>
+                        <segue destination="HQI-fi-ID3" kind="relationship" relationship="viewControllers" id="xQC-ce-jFo"/>
+                        <segue destination="eCb-hn-KTL" kind="relationship" relationship="viewControllers" id="Zvs-Ad-NUw"/>
+                        <segue destination="cHE-5e-1V3" kind="relationship" relationship="viewControllers" id="gdB-oI-Tjn"/>
+                        <segue destination="XeW-2Q-Erl" kind="relationship" relationship="viewControllers" id="Bem-Pp-y1Q"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5mi-cr-JCg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDz-bX-vJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2296" y="812"/>
+            <point key="canvasLocation" x="2296" y="785"/>
         </scene>
     </scenes>
     <resources>
         <image name="1240224_542524825803330_1387862582_n" width="160" height="160"/>
         <image name="Camera-50" width="25" height="25"/>
         <image name="Home-50" width="25" height="25"/>
+        <image name="Search" width="32" height="32"/>
         <image name="heart-empty" width="150" height="147"/>
         <image name="profileimg" width="24" height="24"/>
     </resources>
