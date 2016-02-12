@@ -480,7 +480,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ip6-kd-xIX">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ip6-kd-xIX">
                                                     <rect key="frame" x="8" y="8" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="70" id="F3L-mW-8Or"/>
@@ -507,7 +507,7 @@
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outlet property="profileImage" destination="V7g-sE-biG" id="D9a-SY-MiM"/>
+                                            <outlet property="profileImage" destination="ip6-kd-xIX" id="RVC-dl-NkV"/>
                                             <outlet property="usernameLabel" destination="J0B-cQ-Z9h" id="pp6-O0-3Wi"/>
                                             <segue destination="M2E-Pe-3SH" kind="show" identifier="showProfile" id="7Ey-OD-b9F"/>
                                         </connections>
@@ -747,6 +747,6 @@
         <image name="profileimg" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Meh-DZ-roR"/>
+        <segue reference="7Ey-OD-b9F"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,25 +7,26 @@
 //
 
 import UIKit
-import Firebase
 import Alamofire
+import Firebase
+
 
 class ProfileCell: UITableViewCell {
 
-	@IBOutlet weak var profileImage: UIView!
+	@IBOutlet weak var profileImage: UIImageView!
 	@IBOutlet weak var usernameLabel: UILabel!
 	
-	private var _user: User!
-	var user: User? {
-		return _user
-	}
+
 	var UserRef: Firebase!
+	
     override func awakeFromNib() {
         super.awakeFromNib()
 		
-		profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
-		
+				
     }
+	override func drawRect(rect: CGRect) {
+		profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
+	}
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -36,17 +37,27 @@ class ProfileCell: UITableViewCell {
 	func configureCell(userKey: String) {
 		
 		
-	UserRef = DataService.ds.REF_USERS.childByAppendingPath(userKey)
+		UserRef = DataService.ds.REF_USERS.childByAppendingPath(userKey)
 		UserRef.observeEventType(.Value, withBlock: { snapshot in
 			if let userDict = snapshot.value as? Dictionary<String, AnyObject> {
 				let username = userDict["username"] as! String
 				self.usernameLabel.text = username
 				
+				let profile = userDict["profileImageUrl"] as! String
+				Alamofire.request(.GET, profile).validate(contentType: ["image/*"]).response(completionHandler: {
+					request, response, data, err in
+					
+					if err == nil {
+						let pImg = UIImage(data: data!)!
+						self.profileImage.image = pImg
+					}
+				})
 				
 			}
 			
 		})
 	}
+	
 	
 	
 
