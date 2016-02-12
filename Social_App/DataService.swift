@@ -18,6 +18,7 @@ class DataService {
 	private var _REF_BASE = Firebase(url: "\(BASE_URL)")
 	private var _REF_POSTS = Firebase(url: "\(BASE_URL)/posts")
 	private var _REF_USERS = Firebase(url: "\(BASE_URL)/users")
+	private var _REF_USERNAMES = Firebase(url: "\(BASE_URL)/usernames")
 	
 	var REF_BASE: Firebase {
 		return _REF_BASE
@@ -29,6 +30,10 @@ class DataService {
 	
 	var REF_USERS: Firebase {
 		return _REF_USERS
+	}
+	
+	var REF_USERNAMES: Firebase {
+		return _REF_USERNAMES
 	}
 	
 	func createFirebaseUser(uid: String, user: Dictionary<String, String>) {

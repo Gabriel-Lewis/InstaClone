@@ -25,6 +25,8 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 		if userNameLbl.text != "" && imageSelected == true {
 		let usernametext = userNameLbl.text!.lowercaseString
 		DataService.ds.REF_USER_CURRENT.childByAppendingPath("username").setValue(usernametext)
+			let uid = NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) as! String
+		DataService.ds.REF_USERNAMES.childByAppendingPath(usernametext).setValue(uid)
 		pictureUpload()
 		
 		NSUserDefaults.standardUserDefaults().setObject(usernametext, forKey: USERNAME)
@@ -36,7 +38,7 @@ class UsernameVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
 	
 	@IBAction func ImagePicker(sender: AnyObject) {
 		presentViewController(imagePicker, animated: true, completion: nil)
-		buttonLabel.hidden = true
+		
 	}
 	
 	func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
