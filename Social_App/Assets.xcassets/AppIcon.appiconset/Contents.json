@@ -3,7 +3,11 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
+<<<<<<< HEAD
       "filename" : "Icon-Small@2x.png",
+=======
+      "filename" : "Icon-Small@2x-1.png",
+>>>>>>> follow_functionality
       "scale" : "2x"
     },
     {
@@ -45,7 +49,11 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
+<<<<<<< HEAD
       "filename" : "Icon-Small@2x-1.png",
+=======
+      "filename" : "Icon-Small@2x.png",
+>>>>>>> follow_functionality
       "scale" : "2x"
     },
     {

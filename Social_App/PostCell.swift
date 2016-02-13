@@ -43,8 +43,6 @@ class PostCell: UITableViewCell {
 		heartImg.addGestureRecognizer(tap)
 		heartImg.userInteractionEnabled = true
 		
-		
-		
 	}
 	
 	override func drawRect(rect: CGRect) {
@@ -103,10 +101,16 @@ class PostCell: UITableViewCell {
 		
 	likeRef.observeSingleEventOfType(.Value, withBlock: { snapshot in
 		if snapshot.exists() {
+<<<<<<< HEAD
 			self.heartImg.image = UIImage(named: "heart-full")
 			
 			} else {
 			self.heartImg.image = UIImage(named: "heart-empty")
+=======
+				self.heartImg.image = UIImage(named: "heart-full")
+			} else {
+				self.heartImg.image = UIImage(named: "heart-empty")
+>>>>>>> follow_functionality
 			}
 		})
 	}
@@ -121,8 +125,11 @@ class PostCell: UITableViewCell {
 					self.heartImg.image = UIImage(named: "heart-full")
 					self._post.adjustLikes(true)
 					self.likeRef.setValue(true)
+<<<<<<< HEAD
 					
 					
+=======
+>>>>>>> follow_functionality
 				}
 			})
 		}
