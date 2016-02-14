@@ -13,15 +13,16 @@ To upload photos users can tap the camera icon on the tap bar.
 ###To-do
 - [x] Personal profile tab
   - [x] Collection View of Posts
-- [ ] User Setting view
-  - [ ] Logout
-  - [ ] Change email
-  - [ ] Delete account
 - [x] User Profile view for posts 
-- [ ] User search functionality
+- [x] User search functionality
 - [ ] Follow functionality
   - [ ] Follow/Unfollow functionality
   - [ ] Feed only shows posts followed users
   - [ ] Show user's friends on profile view
+- [ ] User Setting view
+  - [ ] Logout
+  - [ ] Change email
+  - [ ] Delete account
+
 
 
