@@ -19,11 +19,9 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 	var users = [String]()
 	var filteredUsers = []
 	
-	var username = [String: String]()
+
 	
 	var searchActive = false
-	
-	var filteredusername = [String]()
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +53,8 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 	
 	func searchBarSearchButtonClicked(searchBar: UISearchBar) {
 		searchActive = false
+		UIApplication.sharedApplication().sendAction("resignFirstResponder", to:nil, from:nil, forEvent:nil)
+
 	}
 	
 	
@@ -108,7 +108,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 		
 		let ref = Firebase(url: "https://ph-watch.firebaseio.com/usernames")
 		
-		ref.queryOrderedByKey().queryStartingAtValue(searchText).observeEventType(.ChildAdded, withBlock: { snapshot in
+		ref.queryOrderedByKey().queryStartingAtValue(searchText).queryEndingAtValue("\(searchText)\u{f8ff}").observeEventType(.ChildAdded, withBlock: { snapshot in
 			
 			if snapshot != nil {
 			
@@ -121,6 +121,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 		
 		
 	}
+	
 	
 	
 }

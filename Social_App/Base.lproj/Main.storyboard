@@ -268,7 +268,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqw-e4-sIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5770" y="612"/>
+            <point key="canvasLocation" x="5352" y="487"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="yt7-wy-Cho">
@@ -356,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MKH-E6-i1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5770" y="1406"/>
+            <point key="canvasLocation" x="5352" y="1220"/>
         </scene>
         <!--Add Image-->
         <scene sceneID="INK-TH-iwM">
@@ -493,7 +493,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="uiM-9Y-VMP"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -534,7 +534,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vc-zN-pa3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4908" y="1364"/>
+            <point key="canvasLocation" x="4484" y="1220"/>
         </scene>
         <!--Profile-->
         <scene sceneID="PaB-bB-A5K">
@@ -715,7 +715,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DN2-Xy-ppn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4447" y="507"/>
+            <point key="canvasLocation" x="4451" y="487"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WI4-ep-on4">
@@ -735,7 +735,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDz-bX-vJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2296" y="785"/>
+            <point key="canvasLocation" x="2298" y="812"/>
         </scene>
     </scenes>
     <resources>
