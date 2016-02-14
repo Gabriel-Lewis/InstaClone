@@ -41,6 +41,8 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 	
 	func searchBarTextDidEndEditing(searchBar: UISearchBar) {
 		searchActive = false
+		UIApplication.sharedApplication().sendAction("resignFirstResponder", to:nil, from:nil, forEvent:nil)
+
 		
 	}
 	
@@ -54,7 +56,6 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 	func searchBarSearchButtonClicked(searchBar: UISearchBar) {
 		searchActive = false
 		UIApplication.sharedApplication().sendAction("resignFirstResponder", to:nil, from:nil, forEvent:nil)
-
 	}
 	
 	
@@ -122,6 +123,16 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 		
 	}
 	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		if segue.identifier == "showProfile" {
+			let destination = segue.destinationViewController as? ProfileVC
+			let cell = sender as! ProfileCell
+			let selected = SearchTableView.indexPathForCell(cell)
+			let userkey = users[(selected?.row)!]
+			destination!.userKey = userkey
+			
+		}
+	}
 	
 	
 }
