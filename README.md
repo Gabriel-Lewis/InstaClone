@@ -17,7 +17,7 @@ To upload photos users can tap the camera icon on the tap bar.
 - [x] User search functionality
 - [ ] Follow functionality
   - [ ] Follow/Unfollow functionality
-  - [ ] Feed only shows posts followed users
+  - [x] Feed only shows posts followed users
   - [ ] Show user's friends on profile view
 - [ ] User Setting view
   - [ ] Logout
