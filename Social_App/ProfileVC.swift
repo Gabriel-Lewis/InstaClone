@@ -14,6 +14,8 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 	var user: User!
 	var userKey: String!
 	var posts = [Post]()
+	var followingRef: Firebase!
+	var followersRef: Firebase!
 
 	
 	@IBOutlet weak var photoCollection: UICollectionView!
@@ -31,6 +33,15 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 		getUser()
 		
 		}
+	@IBAction func followBtnPressed(sender: AnyObject) {
+		followingRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("following").childByAppendingPath(userKey)
+		followingRef.setValue(true)
+		
+		let uid = NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) as! String
+		
+		followingRef = DataService.ds.REF_USERS.childByAppendingPath(userKey).childByAppendingPath("followers").childByAppendingPath(uid)
+		followingRef.setValue(true)
+	}
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
 		
