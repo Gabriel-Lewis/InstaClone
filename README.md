@@ -9,6 +9,10 @@ InstaClone supports all of the basics of sharing photos with other users in a fe
 ##Signup
 Users can sign into InstaClone using Facebook or their email and password of choice. This information is stored on a Firebase.com database. 
 
+##Search
+
+<img width="270" alt="" src="https://media.giphy.com/media/xT0BKpDysn8NiRaJq0/giphy.gif">
+
 ##Uploading photos
 To upload photos users can tap the camera icon on the tap bar. 
 ###To-do
