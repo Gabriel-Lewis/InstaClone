@@ -27,47 +27,47 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-	
+		DataService.ds.REF_USER_CURRENT.childByAppendingPath("following").observeEventType(.Value, withBlock: { snapshot in
+			if snapshot.exists() {
+				self.following = []
+				for snap in snapshot.value as! Dictionary<String, AnyObject> {
+					
+					self.following.append(snap.0)
+				}
+			}
+			
+				var x = 0
+				
+				while x < self.following.count {
+					
+					let userkey = self.following[x]
+					
+					DataService.ds.REF_USERS.childByAppendingPath(userkey).childByAppendingPath("posts").observeEventType(.Value, withBlock: { snapshot in
+						self.postKeys = []
+						for snap in snapshot.value as! Dictionary<String, AnyObject> {
+							self.postKeys.append(snap.0)
+							print(snap.0)
+						}
+						
+						self.getPosts()
+					})
+					
+					x++
+					
+				}
+			
+		})
+
 
 		feedTV.delegate = self
 		feedTV.dataSource = self
-		DataService.ds.REF_USER_CURRENT.childByAppendingPath("following").observeEventType(.Value, withBlock: { snapshot in
-			
-			for snap in snapshot.value as! Dictionary<String, AnyObject> {
-				
-				self.following.append(snap.0)
-				//print(self.following)
-			}
-			
-			self.getFollowersPostKeys()
-			
-		})
 		
 		
-		
-		
-//		DataService.ds.REF_POSTS.observeEventType(.Value, withBlock: { snapShot in
-//			
-//			if let snapshots = snapShot.children.allObjects as? [FDataSnapshot] {
-//				self.posts = []
-//				for snap in snapshots {
-//					
-//					if let postDict = snap.value as? Dictionary<String,AnyObject> {
-//						let key = snap.key
-//						let post = Post(postKey: key, dictionary: postDict)
-//						self.posts.append(post)
-//					}
-//				}
-//			}
-//			self.sortList()
-//		})
 	}
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(true)
-		
-
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(true)
 	}
-
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return posts.count
@@ -96,8 +96,6 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 			return PostCell()
 		}
 	}
-
-	
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		
@@ -119,39 +117,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		self.feedTV.reloadData()
 	}
 	
-	func someThing() {
-	
-		
-		
-
-	}
-	
-	
 	
 	func getFollowersPostKeys() {
-		var x = 0
 		
-		while x != following.count {
-			
-			let userkey = following[x]
-			
-			DataService.ds.REF_USERS.childByAppendingPath(userkey).childByAppendingPath("posts").observeEventType(.Value, withBlock: { snapshot in
-				for snap in snapshot.value as! Dictionary<String, AnyObject> {
-					self.postKeys.append(snap.0)
-					
-				}
-				self.getPosts()
-			})
-			x++
-			if x == self.following.count {
-				
-				
-			}
-			
-			
-		}
-		
-	
 		
 	}
 	
@@ -159,7 +127,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		
 		var x = 0
 		
-		while x != postKeys.count {
+		while x < postKeys.count {
+			
 			self.posts = []
 
 			let postkey = postKeys[x]
@@ -174,16 +143,14 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 			})
 			
 			x++
+			
 			if x == self.postKeys.count {
 				print(x)
-							}
+			}
 			
 		}
 		
 	}
-	
-	
-	
 	
 }
 

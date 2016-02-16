@@ -127,11 +127,4 @@ class PostCell: UITableViewCell {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	}

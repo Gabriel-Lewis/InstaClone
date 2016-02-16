@@ -17,6 +17,7 @@
 		C0633B671C6C270200D3F325 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0633B661C6C270200D3F325 /* SearchVC.swift */; };
 		C0633B691C6C28C700D3F325 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0633B681C6C28C700D3F325 /* ProfileCell.swift */; };
 		C064B6011C67F26B00DA35C5 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C064B6001C67F26B00DA35C5 /* CollectionViewCell.swift */; };
+		C0A78F401C72921D006DF15E /* FollowingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A78F3F1C72921D006DF15E /* FollowingButton.swift */; };
 		C0BB16DC1C54167D008C5168 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB16DB1C54167D008C5168 /* AppDelegate.swift */; };
 		C0BB16DE1C54167D008C5168 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB16DD1C54167D008C5168 /* ViewController.swift */; };
 		C0BB16E11C54167D008C5168 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0BB16DF1C54167D008C5168 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		C0633B661C6C270200D3F325 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		C0633B681C6C28C700D3F325 /* ProfileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		C064B6001C67F26B00DA35C5 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		C0A78F3F1C72921D006DF15E /* FollowingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowingButton.swift; sourceTree = "<group>"; };
 		C0BB16D81C54167D008C5168 /* InstaClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0BB16DB1C54167D008C5168 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0BB16DD1C54167D008C5168 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				C0BB16DF1C54167D008C5168 /* Main.storyboard */,
 				C0BB16E41C54167D008C5168 /* LaunchScreen.storyboard */,
 				C0BB16F01C541749008C5168 /* MaterialView.swift */,
+				C0A78F3F1C72921D006DF15E /* FollowingButton.swift */,
 				C0BB16F41C541A93008C5168 /* MaterialButton.swift */,
 				C0633B681C6C28C700D3F325 /* ProfileCell.swift */,
 				C0BB16F61C541C1F008C5168 /* materialTextField.swift */,
@@ -318,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0145C8E1C65067700F85DD6 /* PersonalProfileVC.swift in Sources */,
+				C0A78F401C72921D006DF15E /* FollowingButton.swift in Sources */,
 				C0E08FFC1C6037390007A0DD /* ProfileVC.swift in Sources */,
 				C064B6011C67F26B00DA35C5 /* CollectionViewCell.swift in Sources */,
 				C0BB16F11C541749008C5168 /* MaterialView.swift in Sources */,

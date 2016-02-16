@@ -136,7 +136,6 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 	}
 	
 	override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-		
 		view.endEditing(true)
 	}
 	

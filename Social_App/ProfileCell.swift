@@ -24,6 +24,7 @@ class ProfileCell: UITableViewCell {
 		
 				
     }
+	
 	override func drawRect(rect: CGRect) {
 		profileImage.layer.cornerRadius = profileImage.frame.size.width / 2
 	}

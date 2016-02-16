@@ -17,7 +17,6 @@ class CollectionViewCell: UICollectionViewCell {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
-		
 	}
 	
 	
@@ -25,7 +24,6 @@ class CollectionViewCell: UICollectionViewCell {
 	
 	var post: Post? {
 		return _post
-		
 	}
 	
 	func configureCell(post: Post) {
@@ -43,7 +41,6 @@ class CollectionViewCell: UICollectionViewCell {
 				})
 			}
 		})
-		
 		
 	}
 	

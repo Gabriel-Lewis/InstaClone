@@ -11,6 +11,7 @@ import Alamofire
 import Firebase
 
 class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
+	
 	var user: User!
 	var userKey: String!
 	var posts = [Post]()
@@ -18,6 +19,7 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 	var followersRef: Firebase!
 
 	
+	@IBOutlet weak var followBtnView: FollowingButton!
 	@IBOutlet weak var photoCollection: UICollectionView!
 	@IBOutlet weak var profileImg: UIImageView!
 	@IBOutlet weak var usernameLbl: UILabel!
@@ -28,19 +30,44 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 		profileImg.layer.cornerRadius = profileImg.frame.size.width / 2
 		photoCollection.dataSource = self
 		photoCollection.delegate = self
+		let uid = NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) as! String
+		
+		followingRef = DataService.ds.REF_USERS.childByAppendingPath(userKey).childByAppendingPath("followers").childByAppendingPath(uid)
+		followersRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("following").childByAppendingPath(userKey)
+		followingRef.observeSingleEventOfType(.Value, withBlock: { snap in
+			if snap.exists() {
+				self.followBtnView.setTitle("Following", forState: UIControlState.Normal)
+
+			} else {
+				self.followBtnView.setTitle("Follow", forState: UIControlState.Normal)
+
+			}
+		})
 		
 		getPosts()
 		getUser()
 		
 		}
 	@IBAction func followBtnPressed(sender: AnyObject) {
-		followingRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath("following").childByAppendingPath(userKey)
-		followingRef.setValue(true)
+		followersRef.observeSingleEventOfType(.Value, withBlock: { snap in
+			if snap.exists() {
+				self.followingRef.removeValue()
+				self.followersRef.removeValue()
+				self.followBtnView.setTitle("Follow", forState: UIControlState.Normal)
+
+			} else {
+				self.followingRef.setValue(true)
+				self.followersRef.setValue(true)
+				self.followBtnView.setTitle("Following", forState: UIControlState.Normal)
+
+			}
+			
+			})
 		
-		let uid = NSUserDefaults.standardUserDefaults().valueForKey(KEY_UID) as! String
 		
-		followingRef = DataService.ds.REF_USERS.childByAppendingPath(userKey).childByAppendingPath("followers").childByAppendingPath(uid)
-		followingRef.setValue(true)
+		
+		
+		
 	}
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -79,6 +106,7 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 	}
 	
 	func getPosts() {
+		
 		DataService.ds.REF_USERS.childByAppendingPath(userKey).childByAppendingPath("posts").observeEventType(.ChildAdded, withBlock: { snap in
 			let postkey = snap.key
 			
@@ -122,3 +150,5 @@ class ProfileVC: UIViewController, UICollectionViewDelegateFlowLayout, UICollect
 	
 
 }
+
+

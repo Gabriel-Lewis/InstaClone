@@ -334,8 +334,12 @@
                                     <constraint firstAttribute="width" constant="40" id="x31-PD-E9N"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="clip" translatesAutoresizingMaskIntoConstraints="NO" id="ezK-NA-O8P">
-                                <rect key="frame" x="536" y="139" width="44" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezK-NA-O8P" customClass="FollowingButton" customModule="InstaClone" customModuleProvider="target">
+                                <rect key="frame" x="501" y="141" width="79" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="6a3-y2-8hp"/>
+                                    <constraint firstAttribute="width" constant="79" id="FSe-Cj-swG"/>
+                                </constraints>
                                 <state key="normal" title="Follow"/>
                                 <connections>
                                     <action selector="followBtnPressed:" destination="M2E-Pe-3SH" eventType="touchUpInside" id="hDo-bz-Say"/>
@@ -344,7 +348,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DLa-zE-iuq" firstAttribute="top" secondItem="ezK-NA-O8P" secondAttribute="bottom" constant="8" symbolic="YES" id="1vb-hJ-40f"/>
+                            <constraint firstItem="DLa-zE-iuq" firstAttribute="top" secondItem="ezK-NA-O8P" secondAttribute="bottom" constant="8" id="1vb-hJ-40f"/>
                             <constraint firstItem="DLa-zE-iuq" firstAttribute="leading" secondItem="GdF-eI-DJA" secondAttribute="leadingMargin" id="9q6-M0-TF9"/>
                             <constraint firstItem="DLa-zE-iuq" firstAttribute="top" secondItem="iV3-QT-NbS" secondAttribute="bottom" constant="44" id="GuF-Cj-O38"/>
                             <constraint firstItem="xTO-6a-Rhy" firstAttribute="top" secondItem="iV3-QT-NbS" secondAttribute="top" id="JYw-RJ-lq1"/>
@@ -358,6 +362,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="followBtnView" destination="ezK-NA-O8P" id="MGl-Ac-hUo"/>
                         <outlet property="photoCollection" destination="DLa-zE-iuq" id="Bqn-w9-Gtg"/>
                         <outlet property="profileImg" destination="iV3-QT-NbS" id="Y9v-0K-J4t"/>
                         <outlet property="usernameLbl" destination="xTO-6a-Rhy" id="iFe-x8-qKK"/>
