@@ -15,6 +15,9 @@ Users can sign into InstaClone using Facebook or their email and password of cho
 
 ##Uploading photos
 To upload photos users can tap the camera icon on the tap bar. 
+
+<img width="270" alt="" src="https://media.giphy.com/media/pOIwcEaDNoIus/giphy.gif">
+
 ###To-do
 - [x] Personal profile tab
   - [x] Collection View of Posts
