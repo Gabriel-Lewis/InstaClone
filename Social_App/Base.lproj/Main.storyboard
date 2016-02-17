@@ -477,14 +477,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="2SW-Ek-weD">
-                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Jqn-nJ-h9h"/>
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lVq-18-i3V">
-                                <rect key="frame" x="0.0" y="116" width="600" height="435"/>
+                                <rect key="frame" x="0.0" y="108" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="usercell" selectionStyle="default" indentationWidth="10" reuseIdentifier="profilecell" rowHeight="87" id="4tc-Ol-Tj5" customClass="ProfileCell" customModule="InstaClone" customModuleProvider="target">
@@ -536,7 +536,7 @@
                             <constraint firstItem="lVq-18-i3V" firstAttribute="leading" secondItem="lmQ-gK-YPC" secondAttribute="leadingMargin" constant="-20" id="Sut-nh-Rad"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lVq-18-i3V" secondAttribute="trailing" constant="-20" id="U7v-X1-lVB"/>
                             <constraint firstItem="2SW-Ek-weD" firstAttribute="leading" secondItem="lmQ-gK-YPC" secondAttribute="leadingMargin" constant="-20" id="aCl-86-3zC"/>
-                            <constraint firstItem="2SW-Ek-weD" firstAttribute="top" secondItem="mNC-Z8-b9L" secondAttribute="bottom" constant="8" id="aXc-0y-NrH"/>
+                            <constraint firstItem="2SW-Ek-weD" firstAttribute="top" secondItem="mNC-Z8-b9L" secondAttribute="bottom" id="aXc-0y-NrH"/>
                             <constraint firstItem="31N-HO-TpC" firstAttribute="top" secondItem="lVq-18-i3V" secondAttribute="bottom" id="caJ-sF-n6u"/>
                         </constraints>
                     </view>
