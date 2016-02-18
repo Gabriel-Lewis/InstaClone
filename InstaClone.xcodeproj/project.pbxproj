@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6A1C44486DA909FADA9FAB99 /* Pods_Social_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D26BCB462C21BB426CC415 /* Pods_Social_App.framework */; };
 		C0145C8E1C65067700F85DD6 /* PersonalProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0145C8D1C65067700F85DD6 /* PersonalProfileVC.swift */; };
 		C0215A851C55691100D2BB61 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0215A841C55691100D2BB61 /* DataService.swift */; };
 		C02BE6351C5AAE3200915388 /* UsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02BE6341C5AAE3200915388 /* UsernameVC.swift */; };
@@ -27,17 +26,17 @@
 		C0BB16F31C54178A008C5168 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB16F21C54178A008C5168 /* constants.swift */; };
 		C0BB16F51C541A93008C5168 /* MaterialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB16F41C541A93008C5168 /* MaterialButton.swift */; };
 		C0BB16F71C541C1F008C5168 /* materialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BB16F61C541C1F008C5168 /* materialTextField.swift */; };
-		C0BB16FC1C54256B008C5168 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BB16F91C54256B008C5168 /* Bolts.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C0BB16FD1C54256B008C5168 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BB16FA1C54256B008C5168 /* FBSDKCoreKit.framework */; };
-		C0BB16FE1C54256B008C5168 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0BB16FB1C54256B008C5168 /* FBSDKLoginKit.framework */; };
 		C0CFB3721C56BB50008515D9 /* Posts.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CFB3711C56BB50008515D9 /* Posts.swift */; };
 		C0E08FFC1C6037390007A0DD /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E08FFB1C6037390007A0DD /* ProfileVC.swift */; };
 		C0E26AFA1C569BB600C4F57D /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E26AF91C569BB600C4F57D /* FeedVC.swift */; };
 		C0E26AFC1C569FAF00C4F57D /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E26AFB1C569FAF00C4F57D /* PostCell.swift */; };
+		D972995719219DF9497F12A3 /* Pods_InstaClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCF7EBF74BBB6E92F5B2F7D /* Pods_InstaClone.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		90D26BCB462C21BB426CC415 /* Pods_Social_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Social_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1C230254847D17A45147384A /* Pods-InstaClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InstaClone/Pods-InstaClone.debug.xcconfig"; sourceTree = "<group>"; };
+		4C24472E243B26966282A64C /* Pods-InstaClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstaClone/Pods-InstaClone.release.xcconfig"; sourceTree = "<group>"; };
+		5DCF7EBF74BBB6E92F5B2F7D /* Pods_InstaClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0145C8D1C65067700F85DD6 /* PersonalProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalProfileVC.swift; sourceTree = "<group>"; };
 		C0215A841C55691100D2BB61 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C02BE6341C5AAE3200915388 /* UsernameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameVC.swift; sourceTree = "<group>"; };
@@ -59,9 +58,6 @@
 		C0BB16F21C54178A008C5168 /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		C0BB16F41C541A93008C5168 /* MaterialButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialButton.swift; sourceTree = "<group>"; };
 		C0BB16F61C541C1F008C5168 /* materialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = materialTextField.swift; sourceTree = "<group>"; };
-		C0BB16F91C54256B008C5168 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		C0BB16FA1C54256B008C5168 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		C0BB16FB1C54256B008C5168 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		C0CFB3711C56BB50008515D9 /* Posts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Posts.swift; sourceTree = "<group>"; };
 		C0E08FFB1C6037390007A0DD /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		C0E26AF91C569BB600C4F57D /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -76,10 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0BB16FC1C54256B008C5168 /* Bolts.framework in Frameworks */,
-				C0BB16FD1C54256B008C5168 /* FBSDKCoreKit.framework in Frameworks */,
-				C0BB16FE1C54256B008C5168 /* FBSDKLoginKit.framework in Frameworks */,
-				6A1C44486DA909FADA9FAB99 /* Pods_Social_App.framework in Frameworks */,
+				D972995719219DF9497F12A3 /* Pods_InstaClone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +84,8 @@
 			children = (
 				FF48DBD301BC13D379D3BF24 /* Pods-Social_App.debug.xcconfig */,
 				ED33CE46A2649E873D597CF5 /* Pods-Social_App.release.xcconfig */,
+				1C230254847D17A45147384A /* Pods-InstaClone.debug.xcconfig */,
+				4C24472E243B26966282A64C /* Pods-InstaClone.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -125,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				C0215A831C5568D600D2BB61 /* Services */,
-				C0BB16F81C5424DF008C5168 /* Frameworks */,
 				C0BB16EF1C5416B1008C5168 /* Controller */,
 				C0BB16EE1C5416A2008C5168 /* View */,
 				C0BB16ED1C54169B008C5168 /* Model */,
@@ -177,22 +171,11 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		C0BB16F81C5424DF008C5168 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C0BB16F91C54256B008C5168 /* Bolts.framework */,
-				C0BB16FA1C54256B008C5168 /* FBSDKCoreKit.framework */,
-				C0BB16FB1C54256B008C5168 /* FBSDKLoginKit.framework */,
-				90D26BCB462C21BB426CC415 /* Pods_Social_App.framework */,
-			);
-			name = Frameworks;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		CFC5752DC0DA207C0C660867 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				F8E1BDE662E94891A1B55D9E /* Pods_Social_App.framework */,
+				5DCF7EBF74BBB6E92F5B2F7D /* Pods_InstaClone.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -280,7 +263,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Social_App/Pods-Social_App-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InstaClone/Pods-InstaClone-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		988320D30A8AD0843C1CF1EF /* Check Pods Manifest.lock */ = {
@@ -310,7 +293,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Social_App/Pods-Social_App-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InstaClone/Pods-InstaClone-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -450,7 +433,7 @@
 		};
 		C0BB16EB1C54167D008C5168 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF48DBD301BC13D379D3BF24 /* Pods-Social_App.debug.xcconfig */;
+			baseConfigurationReference = 1C230254847D17A45147384A /* Pods-InstaClone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -466,7 +449,7 @@
 		};
 		C0BB16EC1C54167D008C5168 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED33CE46A2649E873D597CF5 /* Pods-Social_App.release.xcconfig */;
+			baseConfigurationReference = 4C24472E243B26966282A64C /* Pods-InstaClone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
