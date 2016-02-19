@@ -44,20 +44,19 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 					
 					DataService.ds.REF_USERS.childByAppendingPath(userkey).childByAppendingPath("posts").observeEventType(.Value, withBlock: { snapshot in
 						self.postKeys = []
+						if snapshot.exists() {
 						for snap in snapshot.value as! Dictionary<String, AnyObject> {
 							self.postKeys.append(snap.0)
 							print(snap.0)
-						}
 						
-						self.getPosts()
+							}
+							self.getPosts()
+						}
 					})
-					
-					x++
-					
+						x++
 				}
-			
 		})
-
+			
 
 		feedTV.delegate = self
 		feedTV.dataSource = self
@@ -81,9 +80,9 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 		
 		let post = posts[indexPath.row]
 		if let cell = feedTV.dequeueReusableCellWithIdentifier("PostCell") as? PostCell {
-			cell.request?.cancel()
 			var img: UIImage?
-			
+			cell.request?.cancel()
+
 			if let url = post.imageURL {
 				img = FeedVC.imageCache.objectForKey(url) as? UIImage
 			}

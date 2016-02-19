@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Firebase
+import AlamofireImage
 
 class PostCell: UITableViewCell {
 
@@ -60,14 +61,27 @@ class PostCell: UITableViewCell {
 					let username = userDict["username"] as! String
 					self.usernameLabl.text = username
 					let profile = userDict["profileImageUrl"] as! String
-					Alamofire.request(.GET, profile).validate(contentType: ["image/*"]).response(completionHandler: {
-						request, response, data, err in
+					Alamofire.request(.GET, profile).responseImage { response in
+						debugPrint(response)
 						
-						if err == nil {
-							let pImg = UIImage(data: data!)!
-							self.profileImg.image = pImg
+						print(response.request)
+						print(response.response)
+						debugPrint(response.result)
+						
+						if let image = response.result.value {
+							self.profileImg.image = image
 						}
-					})
+					}
+					
+					
+//						.validate(contentType: ["image/*"]).response(completionHandler: {
+//						request, response, data, err in
+//						
+//						if err == nil {
+//							let pImg = UIImage(data: data!)!
+//							self.profileImg.image = pImg
+//						}
+//					})
 				}
 		
 		})
@@ -79,17 +93,32 @@ class PostCell: UITableViewCell {
 			if img != nil {
 				self.mainImg.image = img
 			} else {
-				Alamofire.request(.GET, post.imageURL!).validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+				Alamofire.request(.GET, post.imageURL!).responseImage { response in
+					debugPrint(response)
 					
-					if err == nil {
-						
-						//Add If let!!!
-						let img = UIImage(data: data!)!
-						self.mainImg.image = img
-						FeedVC.imageCache.setObject(img, forKey: self._post.imageURL!)
+					print(response.request)
+					print(response.response)
+					debugPrint(response.result)
+					
+					if let image = response.result.value {
 						self.mainImg.hidden = false
+						self.mainImg.image = image
+						
 					}
-				})
+				}
+				
+				
+//					.validate(contentType: ["image/*"]).response(completionHandler: { request, response, data, err in
+//					
+//					if err == nil {
+//						
+//						//Add If let!!!
+//						let img = UIImage(data: data!)!
+//						self.mainImg.image = img
+//						FeedVC.imageCache.setObject(img, forKey: self._post.imageURL!)
+//						self.mainImg.hidden = false
+//					}
+//				})
 			}
 			
 			if post.imageURL != nil {
