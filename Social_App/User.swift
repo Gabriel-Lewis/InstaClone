@@ -48,9 +48,12 @@ class User {
 			self._postRef = post
 		}
 		
-		
-		if let username = dictionary["username"] as? String {
+			if let username = dictionary["username"] as? String {
 			self._username = username
+		}
+		
+		if let profileImageURL = dictionary["profileImageUrl"] as? String {
+			self._profileImageURL = profileImageURL
 		}
 		
 		self._userRef = DataService.ds.REF_USER_CURRENT.childByAppendingPath(self.userKey)

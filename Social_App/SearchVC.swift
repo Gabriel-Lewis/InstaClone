@@ -118,9 +118,6 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 			}
 			self.SearchTableView.reloadData()
 		})
-		
-		
-		
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -130,11 +127,8 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 			let selected = SearchTableView.indexPathForCell(cell)
 			let userkey = users[(selected?.row)!]
 			destination!.userKey = userkey
-			
 		}
 	}
-	
-	
 }
 
 

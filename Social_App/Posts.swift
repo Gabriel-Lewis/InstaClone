@@ -20,6 +20,7 @@ class Post {
 	private var _userKey: String!
 	
 	
+	
 	private var _postRef: Firebase!
 	
 	var date: String {
@@ -54,12 +55,10 @@ class Post {
 		return _userKey
 	}
 	
-	init(description: String, imageURL: String, likes: Int, username: String, profileImgURL: String, date: String, userKey: String) {
+	init(description: String, imageURL: String, likes: Int, date: String, userKey: String) {
 		self._postDescription = description
 		self._likes = likes
-		self._username = username
 		self._imageURL = imageURL
-		self._profileImageURL = profileImgURL
 		self._date = date
 		self._userKey = userKey
 	}

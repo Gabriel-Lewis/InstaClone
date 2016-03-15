@@ -116,8 +116,7 @@ class UploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
 			firebasePost.setValue(post) { Err, FireBase in
 				FireBase.observeEventType(.Value, withBlock: { snapshot in
 					if snapshot.exists() {
-						self.addPost(snapshot.key)
-						
+					self.addPost(snapshot.key)
 				}
 			})
 		}

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import Alamofire
+import AlamofireImage
 
 
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -17,92 +18,121 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	@IBOutlet weak var feedTV: UITableView!
 	
 	var posts = [Post]()
+	var list = [Post]()
 	var postKeys = [String]()
 	var post: Post!
-	var user: User!
 	var following = [String]()
-	static var imageCache = NSCache()
 	var cell: PostCell!
+	var user: User!
+	
+	//static var imageCache = NSCache()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		DataService.ds.REF_USER_CURRENT.childByAppendingPath("following").observeEventType(.Value, withBlock: { snapshot in
-			if snapshot.exists() {
-				self.following = []
-				for snap in snapshot.value as! Dictionary<String, AnyObject> {
-					
-					self.following.append(snap.0)
-				}
-			}
-			
-				var x = 0
-				
-				while x < self.following.count {
-					
-					let userkey = self.following[x]
-					
-					DataService.ds.REF_USERS.childByAppendingPath(userkey).childByAppendingPath("posts").observeEventType(.Value, withBlock: { snapshot in
-						self.postKeys = []
-						if snapshot.exists() {
-						for snap in snapshot.value as! Dictionary<String, AnyObject> {
-							self.postKeys.append(snap.0)
-							print(snap.0)
-						
-							}
-							self.getPosts()
-						}
-					})
-						x++
-				}
-		})
-			
 
 		feedTV.delegate = self
 		feedTV.dataSource = self
-		
-		
+		feedTV.allowsSelection = false
+
+		initObservers()
+
+
 	}
 	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(true)
+	func initObservers() {
+		
+	DataService.ds.REF_USER_CURRENT.childByAppendingPath("following").observeSingleEventOfType(.Value, withBlock: { snapshot in
+		self.following = []
+
+		if snapshot.exists() {
+			if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
+				
+				for snap in snapshots {
+					self.following.append(snap.key)
+					
+					}
+				}
+			self.postKeys = []
+			self.posts = []
+			for userkeys in self.following {
+				DataService.ds.REF_USERS.childByAppendingPath(userkeys).childByAppendingPath("posts").observeSingleEventOfType(.Value, withBlock: { snapshot in
+					
+					if let snapshots = snapshot.children.allObjects as? [FDataSnapshot] {
+						for snap in snapshots {
+							let key = snap.key
+							self.postKeys.append(key)
+				
+				
+			
+							DataService.ds.REF_POSTS.childByAppendingPath(key).observeSingleEventOfType(.Value, withBlock: { snapshot in
+								
+								if let postDict = snapshot.value as? Dictionary<String, AnyObject> {
+									let post = Post(postKey: key, dictionary: postDict)
+									self.posts.append(post)
+									self.feedTV.reloadData()
+									
+								}
+								
+							})
+						}
+						
+					}
+				})
+			}
+			}
+		
+
+
+		})
+
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return posts.count
+		return self.posts.count
 	}
 	
-	func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-		return 1
+
+	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		let height = self.feedTV.layer.frame.height
+		return height / 1.25
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let post1 = posts[indexPath.row]
+		let userkey = post1.userKey
 		
-		let post = posts[indexPath.row]
-		if let cell = feedTV.dequeueReusableCellWithIdentifier("PostCell") as? PostCell {
-			var img: UIImage?
-			cell.request?.cancel()
-
-			if let url = post.imageURL {
-				img = FeedVC.imageCache.objectForKey(url) as? UIImage
-			}
 			
-			cell.configureCell(post, img: img)
+			
+		if let cell = feedTV.dequeueReusableCellWithIdentifier("PostCell", forIndexPath: indexPath) as? PostCell {
+			
+			
+				
+			
+			
+			cell.configureCell(post1, userKey: userkey)
+			//			if let url = post.imageURL {
+//				img = FeedVC.imageCache.objectForKey(url) as? UIImage
+//			}
+//			let tap = UITapGestureRecognizer(target: self, action: "handleTap:")
+//			tap.numberOfTapsRequired = 1
+//			cell.profileImg.addGestureRecognizer(tap)
+			
+			
 			
 			return cell
 			
 		} else {
 			return PostCell()
 		}
+	
 	}
 	
 	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 		
 		if segue.identifier == "showProfile" {
 			let destination = segue.destinationViewController as? ProfileVC
-			let cell = sender as! PostCell
-			let selectedRow = feedTV.indexPathForCell(cell)
-			let user1 = posts[(selectedRow?.row)!].userKey
+			let user1 = posts[(sender?.row)!].userKey
 			destination!.userKey = user1
 			
 		}
@@ -110,46 +140,18 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 	}
 	
 	
+	func handleTap(sender: UITapGestureRecognizer) {
+		let touch = sender.locationInView(feedTV)
+		if let indexPath = feedTV.indexPathForRowAtPoint(touch) {
+			performSegueWithIdentifier("showProfile", sender: indexPath)
+		}
+	}
+	
 	func sortList() {
-		posts.sortInPlace() { $0.date > $1.date }
-		
+		self.posts.sortInPlace() { $0.date > $1.date }
 		self.feedTV.reloadData()
 	}
 	
-	
-	func getFollowersPostKeys() {
-		
-		
-	}
-	
-	func getPosts() {
-		
-		var x = 0
-		
-		while x < postKeys.count {
-			
-			self.posts = []
-
-			let postkey = postKeys[x]
-			
-			DataService.ds.REF_POSTS.childByAppendingPath(postkey).observeEventType(.Value, withBlock: { snapshot in
-				
-				let postDict = snapshot.value as! Dictionary<String, AnyObject>
-				let post = Post(postKey: snapshot.key, dictionary: postDict)
-				self.posts.append(post)
-				self.sortList()
-			
-			})
-			
-			x++
-			
-			if x == self.postKeys.count {
-				print(x)
-			}
-			
-		}
-		
-	}
 	
 }
 

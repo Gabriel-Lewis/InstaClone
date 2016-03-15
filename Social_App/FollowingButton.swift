@@ -17,5 +17,4 @@ class FollowingButton: UIButton {
 		layer.borderWidth = 1
 		
 	}
-	
 }

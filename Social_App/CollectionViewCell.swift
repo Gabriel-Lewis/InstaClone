@@ -37,13 +37,8 @@ class CollectionViewCell: UICollectionViewCell {
 						let pimg = UIImage(data: data!)!
 						self.image.image = pimg
 					}
-					
 				})
 			}
 		})
-		
 	}
-	
-	
-	
 }
