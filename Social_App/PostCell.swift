@@ -39,7 +39,7 @@ class PostCell: UITableViewCell {
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		
-		let tap = UITapGestureRecognizer(target: self, action: "likeTapped:")
+		let tap = UITapGestureRecognizer(target: self, action: #selector(PostCell.likeTapped(_:)))
 		tap.numberOfTapsRequired = 1
 		self.heartImg.addGestureRecognizer(tap)
 		self.heartImg.userInteractionEnabled = true

@@ -41,7 +41,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 	
 	func searchBarTextDidEndEditing(searchBar: UISearchBar) {
 		searchActive = false
-		UIApplication.sharedApplication().sendAction("resignFirstResponder", to:nil, from:nil, forEvent:nil)
+		UIApplication.sharedApplication().sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, forEvent:nil)
 
 		
 	}
@@ -55,7 +55,7 @@ class SearchVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UI
 	
 	func searchBarSearchButtonClicked(searchBar: UISearchBar) {
 		searchActive = false
-		UIApplication.sharedApplication().sendAction("resignFirstResponder", to:nil, from:nil, forEvent:nil)
+		UIApplication.sharedApplication().sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, forEvent:nil)
 	}
 	
 	
