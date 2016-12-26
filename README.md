@@ -1,8 +1,8 @@
 # InstaClone
 
-InstaClone is a super simple version of the popular app, Instagram. (You might have heard of it)
+InstaClone is a simple version of the popular app, Instagram. (You might have heard of it)
 
-<img alt="" src="https://media.giphy.com/media/vMQHLcoLkTMLS/giphy.gif">
+<img alt="InstaClone" src="https://media.giphy.com/media/vMQHLcoLkTMLS/giphy.gif">
 
 InstaClone supports all of the basics of sharing photos with other users in a feed that incoorporates material design. 
 
@@ -11,12 +11,12 @@ Users can sign into InstaClone using Facebook or their email and password of cho
 
 ##Search
 
-<img width="270" alt="" src="https://media.giphy.com/media/xT0BKpDysn8NiRaJq0/giphy.gif">
+<img width="270" alt="Instagram" src="https://media.giphy.com/media/xT0BKpDysn8NiRaJq0/giphy.gif">
 
 ##Uploading photos
 To upload photos users can tap the camera icon on the tap bar. 
 
-<img width="270" alt="" src="https://media.giphy.com/media/pOIwcEaDNoIus/giphy.gif">
+<img width="270" alt="Feed" src="https://media.giphy.com/media/pOIwcEaDNoIus/giphy.gif">
 
 ###To-do
 - [x] Personal profile tab
